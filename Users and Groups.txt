@@ -78,5 +78,5 @@ group_name:group_password:group_ID:users_list
 -groupmod -a new_group_name (change group name on new one)
 -groupmod -o (allow to se GID on existing one)
 
-6. GROUP DELlETING
+6. GROUP DELLETING
 - groupdel group_name
