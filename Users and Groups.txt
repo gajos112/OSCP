@@ -59,7 +59,7 @@ new_user:n324onuif09j23fononwoinj:14518:0:99999:7:5:14618:
 
 3. DELLETING USER LINUX
 - userdel (remove account)
-- userdel -f (remove account iven if user is log in)
+- userdel -f (remove account even if user is log in)
 - userdel -r (remove user home directory)
 
 Information about group is stored /etc/group
