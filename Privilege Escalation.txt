@@ -99,7 +99,10 @@ LESS
 - find / -name tftp*
 - find / -name ftp
 
-9. Skrypty
+9. Sprawdzanie IPTables
+- iptables -L
+
+10. Skrypty
 LinEnum 
 - /LinEnum.sh -k keyword -r report -e /tmp/ -t
 - https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
