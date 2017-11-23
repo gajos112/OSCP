@@ -1,4 +1,6 @@
-//Created by Krzysztof Gajewski https://www.linkedin.com/in/krzysztof-gajewski-537683b9/ //
+Created by Krzysztof Gajewski 
+https://www.linkedin.com/in/krzysztof-gajewski-537683b9/ 
+
 
 Local File Inclusion
 Atak ten polega na możliwości odczytywania plików dowolnie pod zdalnie z atakowane systemu.
