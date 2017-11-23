@@ -1,0 +1,78 @@
+SUDOERS
+
+Privilege separation is one of the fundamental security concepts implemented in Linux. Normal users works as limited privileges to reduce the scope of their permission.
+
+Account called "ROOT" is "super-user" privileges. This is an administrative account without the restrictions that are present on normal users.Users can execute commands with "super-user" or "root" privileges in a number of different ways.
+
+Users can works as root and use speccial permission if they are added to sudoers.
+To become root performs commands listed below:
+
+1. SU
+- su (substitute user)
+Put root users' password. After all needed action exit root shell.
+- exit
+
+2. SUDO
+SUDO command allows us to execute command as root.
+- sudo command_to_execute
+
+Unlike SU, the SUDO command will reqiure password for user which is calling the command, not the ROOT password.
+
+File which contains permission acording to SUDO are stored in /etc/sudoers
+
+VISUDO is file editor whcih should be used to change /etc/sudoers file, it validates the syntax of sudo file to make sure that we will not crash the file. In situation when we will broke the file we can blocked whole sudo access.
+
+
+////////////////////////////////////etc/sudoers//////////////////////////////////////////
+
+root$: cat /etc/sudoers
+
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+root    ALL=(ALL:ALL) ALL
+
+%admin ALL=(ALL) ALL
+%sudo   ALL=(ALL:ALL) ALL
+
+#includedir /etc/sudoers.d
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+- root ALL=(ALL:ALL) ALL (The first field indicates the username that the rule will apply to (root))
+- root ALL=(ALL:ALL) ALL (The first "ALL" indicates that this rule applies to all hosts)
+- root ALL=(ALL:ALL) ALL (This "ALL" indicates that the root user can run commands as all users)
+- root ALL=(ALL:ALL) ALL (This "ALL" indicates that the root user can run commands as all groups)
+- root ALL=(ALL:ALL) ALL (The last "ALL" indicates these rules apply to all commands)
+
+Names beginning with a "%" indicate group names. Here, we see the "admin" group can execute any command as any user on any host. Similarly, the sudo group can has the same privileges, but can execute as any group as well.
+
+Files in /etc/sudoers.d directory follow the same rules as the /etc/sudoers file itself. Any file that does not end in ~ and that does not have a . in it will be read and applied to the sudo configuration.
+
+3. HOW TO GICE SUDO PRIVILEGES
+- sudo usermod -aG sudo username
+- sudo gpasswd -a username sudo
+
+4. ALIASES
+
+////////////////////////////////////etc/sudoers//////////////////////////////////////////
+
+...
+User_Alias      GROUPONE = abby, brent, carl
+User_Alias      GROUPTWO = brent, doris, eric, 
+User_Alias      GROUPTHREE = doris, felicia, grant
+...
+GROUPTWO    ALL = /usr/bin/apt-get update
+...
+
+
+#includedir /etc/sudoers.d
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+5. Additional information
+- sudo -k (after we type password for sudo, system will not ask to type it again for certain amount of time, we can clear it with that command)
+- sudo -v (it show sudo version, then we can check for exploit)
+- sudo -l (it will list rules for current user which are allwoed in /etc/sudoers
+- sudo !! (it will repeat last command with sudo previx)
