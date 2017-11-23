@@ -1,3 +1,7 @@
+Created by Krzysztof Gajewski 
+https://www.linkedin.com/in/krzysztof-gajewski-537683b9/ 
+
+
 Wyróżniamy dwa rodzaje ataków SQLI
 - SQL Injection error based
 - Blind SQL Injection 
