@@ -1,0 +1,6 @@
+
+Created by Krzysztof Gajewski 
+https://www.linkedin.com/in/krzysztof-gajewski-537683b9/
+
+unshadow passwd.txt shadow.txt > hash_file.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt hash_file.txt
