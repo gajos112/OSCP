@@ -1,0 +1,8 @@
+
+1. How to unzip rockyou.txt.gz
+
+root@kali:~# cd /usr/share/wordlists/
+root@kali:/usr/share/wordlists# gzip -d rockyou.txt.gz 
+root@kali:/usr/share/wordlists# ls rock*
+rockyou.txt
+root@kali:/usr/share/wordlists# 
