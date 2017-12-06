@@ -1,0 +1,39 @@
+
+1. Finger enumeration
+
+On Linux operating system, you can simply check the information of any user from remote or local command line interface. That is ‘finger’ command.
+
+-----------------------------------NMAP CHEK--------------------------------
+
+root@kali:~# nmap -sS -A 10.0.2.9
+
+Starting Nmap 7.60 ( https://nmap.org ) at 2017-12-03 02:42 EST
+Nmap scan report for 10.0.2.9
+Host is up (0.00023s latency).
+Not shown: 988 closed ports
+PORT     STATE SERVICE    VERSION
+79/tcp   open  finger     Linux fingerd
+|_finger: No one logged on.\x0D
+
+-----------------------------------FINGER COMMAND--------------------------------
+
+root@kali:~# finger user@10.0.2.9
+Login: user           			Name: user
+Directory: /home/user               	Shell: /bin/bash
+Never logged in.
+No mail.
+No Plan.
+
+Login: dovenull       			Name: Dovecot login user
+Directory: /nonexistent             	Shell: /bin/false
+Never logged in.
+No mail.
+No Plan.
+
+
+root@kali:~# finger vulnix@10.0.2.9
+Login: vulnix         			Name: 
+Directory: /home/vulnix             	Shell: /bin/bash
+Never logged in.
+No mail.
+No Plan.
