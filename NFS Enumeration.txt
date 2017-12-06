@@ -1,0 +1,40 @@
+
+-----------------------------NFS DESCRIPTION-----------------------------
+
+1. Network FILE SYSTEM
+
+Network File System (NFS) - remote filesystem access [RFC 1813] [RFC5665]. A commonly scanned and exploited attack vector. Normally, port scanning is needed to find which port this service runs on, but since most installations run NFS on this port, hackers/crackers can bypass fingerprinting and try this port directly.
+
+FreeBSD is vulnerable to a denial of service attack. A remote attacker could send a specially-crafted NFS Mount request to TCP port 2049 to cause a kernel panic, resulting in a denial of service.
+References: [CVE-2006-0900] [BID-16838]
+
+Stack-based buffer overflow in nfsd.exe in XLink Omni-NFS Server 5.2 allows remote attackers to execute arbitrary code via a crafted TCP packet to port 2049 (nfsd), as demonstrated by vd_xlink.pm.
+References: [CVE-2006-5780] [BID-20941] [SECUNIA-22751]
+
+Novell Netware is vulnerable to a stack-based buffer overflow, caused by improper bounds checking by the xnfs.nlm component when processing NFS requests. By sending a specially-crafted NFS RPC request to UDP port 2049, a remote attacker could overflow a buffer and execute arbitrary code on the system or cause the server to crash.
+
+-----------------------------NFS MOUNT-----------------------------
+
+2. Mount NFS share
+
+root@kali:~# showmount -h
+Usage: showmount [-adehv]
+[--all] [--directories] [--exports]
+[--no-headers] [--help] [--version] [host]
+root@kali:~# showmount 192.168.1.72
+Hosts on 192.168.1.72:
+root@kali:~# showmount -e 192.168.1.72
+Export list for 192.168.1.72:
+/home/vulnix *
+root@kali:~# mkdir /tmp/nfs
+root@kali:~# mount -t nfs 192.168.1.72:/home/vulnix /tmp/nfs -nolock
+root@kali:~# cd /tmp
+root@kali:/tmp# ls -al
+total 52
+drwxrwxrwt 12 root       root       4096 Oct 30 23:22 .
+drwxr-xr-x 22 root       root       4096 Sep 29 03:47 ..
+...
+drwxr-x---  2 nobody     4294967294 4096 Sep  2  2012 nfs
+...
+root@kali:/tmp# cd /tmp/nfs
+bash: cd: /tmp/nfs: Permission denied
