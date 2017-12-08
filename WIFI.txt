@@ -1,0 +1,41 @@
+
+-----------------------------WIFI--------------------------------
+
+Disabled Netowrk menager to avoid situation that something is using net interface.
+
+- ifconfig (all enable interface)
+- ifconfig -a (lists all interface even this disable)
+- ifconfig wlan0 up (enable interface)
+- ifconfig wlan0 down (diseable interface)
+- ifconfig interface_name (show configuration of particular interface)
+
+Mode:Managed - iwconfig wlan0 mode managed (managed by AP)
+Mode:Monitor - iwconfig wlan0 mode monitor
+
+- man -k iw
+- iwlist interface_name scanning (display AP which were discovered)
+- iwconfig interface_name essid ssid_name
+- iwconfig interface_name (confirm if interface is associated with AP which is specify by ESSID)
+- dhcpclient interface_name
+- ifconfig interface_name (confirm if interface recieved IP address)
+
+iwconfig - elements of a wireless card: the ESSID, WEP keys, etc. 
+ifconfig - IP address, subnet mask etc
+
+---------------------------Network Manager CLI-------------------------------
+
+- nmcli -f in-use,ssid,bssid,signal,bars  dev wifi
+- $ nmcli d wifi connect XX:XX:XX:XX:XX:XX
+
+------------------------------------KISMET------------------------------------
+
+
+
+---------------------------------PAKIET AIRCRACK--------------------------------
+
+- airmon-ng check
+- airmon-ng check kill
+- airmon-ng wlan0 start
+- airodump-ng wlan0mon
+- airodump-ng -w FILE_NAME -c 11 --bssid MAC_ADDRESS
+- aireplay-ng --deauth 10 -a BSSID_MAC -c STATION_MAC wlan0mon
