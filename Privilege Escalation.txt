@@ -6,6 +6,8 @@ https://www.linkedin.com/in/krzysztof-gajewski-537683b9/
 - lsb_release -a
 - uname -a 
 - cat /etc/*-release
+- https://github.com/lucyoa/kernel-exploits
+- https://pentestlab.blog/2017/04/24/windows-kernel-exploits/
 
 How to run exploit:
 - cd /tmp
