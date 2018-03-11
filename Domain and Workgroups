@@ -1,0 +1,14 @@
+In a Windows network, a domain is a group of server computers that share a common user account database. A user at a client 
+computer can log in to a domain to access shared resources for any server in the domain. Each domain must have at least one server 
+computer designated as the domain controller, which is ultimately in charge of the domain.
+
+Most domain networks share this work among at least two domain controllers, so that if one of the controllers stops working,
+the network can still function.
+
+A peer-to-peer network can’t have a domain because it doesn’t have a dedicated server computer to act as a domain controller. 
+Instead, computers in a peer-to-peer network are grouped in workgroups, which are simply groups of computers that can share 
+resources with each other. Each computer in a workgroup keeps track of its own user accounts and security settings, so no 
+single computer is in charge of the workgroup.
+
+To create a domain, you have to designate a server computer as the domain controller and configure user accounts. Workgroups are 
+much easier to administer. In fact, you don’t have to do anything to create a workgroup except decide on the name you want to use.
