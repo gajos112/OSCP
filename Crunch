@@ -1,0 +1,45 @@
+Kali Linux has built into it a tool called "crunch" that enables us to create a custom password-cracking wordlist that we can use with 
+such tools like Hashcat, Cain and Abel, John the Ripper, Aircrack-ng, and others.
+
+Syntax:
+crunch <min> max<max> <characterset> -t <pattern> -o <output filename>
+
+min = The minimum password length.
+
+max = The maximum password length.
+
+characterset = The character set to be used in generating the passwords.
+
+-t <pattern> = The specified pattern of the generated passwords. For instance, i
+  f you knew that the target's birthday was 0728 (July 28th) and you suspected they used their birthday in their password (people often do), 
+  you could generate a password list that ended with 0728 by giving crunch the pattern @@@@@@@0728. This word generate passwords up to 
+  11 characters (7 variable and 4 fixed) long that all ended with 0728.
+
+-o <outputfile> = This is the file you want your wordlist written to.
+
+-f This switch allows us to choose the character set we want to use to generate our wordlist. The syntax is: -f /path/to/charset.lst
+  <charactersetname>
+  
+/usr/share/rainbowcrack/charset.txt
+
+numeric            = [0123456789]
+
+alpha              = [ABCDEFGHIJKLMNOPQRSTUVWXYZ]
+alpha-numeric      = [ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]
+
+loweralpha         = [abcdefghijklmnopqrstuvwxyz]
+loweralpha-numeric = [abcdefghijklmnopqrstuvwxyz0123456789]
+
+mixalpha           = [abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]
+mixalpha-numeric   = [abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]
+
+ascii-32-95                  = [ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~]
+ascii-32-65-123-4            = [ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`{|}~]
+alpha-numeric-symbol32-space = [ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=~`[]{}|\:;"'<>,.?/ ]
+
+  
+  Examples:
+  
+  crunch 10 10 -t @@@@@@0728 -o /root/birthdaywordlist.lst
+  crunch 8 8 -f /usr/share/rainbowcrack/charset.txt mixalpha -o /root/alphawordlist.lst
+  
