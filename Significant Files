@@ -1,5 +1,7 @@
 /etc/passwd
+/etc/shadow
 /etc/group
+/etc/motd -  message of the day
 /etc/hosts
 /etc/motd
 /etc/issue
