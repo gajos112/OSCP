@@ -1,0 +1,16 @@
+NetStumbler - The tool allows you to scan for nearby Wi-Fi access points and to get details about them.
+ttp://www.netstumbler.com/downloads/
+
+Hacking Wi-Fi Using Aircrack - http://www.tamos.com/download/main/ca.php
+
+Cain and Abel.
+
+AirJack -  downloadable as source code you then must compile. For some, this is going to be a bit more effort than they may 
+wish to expend. However, AirJack is such a popular tool, I would be remiss not to cover it. You can download it from here: 
+https://sourceforge.net/projects/airjack
+
+Kismet is another tool that downloads as source code you must compile yourself. It can be downloaded from 
+https://www.kismetwireless.net/. 
+
+Both of these tools provide similar functionality to the tools we have already discussed. I am simply listing them here as 
+alternative tools you may wish to investigate.
