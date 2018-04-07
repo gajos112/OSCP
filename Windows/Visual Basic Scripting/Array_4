@@ -1,0 +1,14 @@
+' =================== ARRAY =================
+
+option explicit
+
+' Array one column 5 rows
+
+Const SITE = "www.strona.pl"
+Dim Tablica
+
+Tablica = Split(SITE,".")
+
+MsgBox Tablica(0)
+MsgBox Tablica(1)
+MsgBox Tablica(2) 
