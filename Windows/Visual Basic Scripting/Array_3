@@ -1,0 +1,29 @@
+' =================== ARRAY =================
+
+option explicit
+
+' Array one column 5 rows
+
+Dim arrNums()
+'Deklarowanie rozmiaru
+ReDim arrNums(4)
+Const NAME = "Kubus jest malutki"
+
+' First syntax
+arrNums(0) = "Kuba"
+arrNums(1) = "Alan"
+arrNums(2) = "Paula"
+arrNums(3) = "Krzys"
+arrNums(4) = "Jajka"
+
+Dim arrNames
+' Second syntax
+arrNames = Array("1","2","3","4","5")
+
+'Deklarowanie rozmiaru pozostawiajac stare wartosci
+ReDim Preserve arrNums(9)
+arrNums(8) = "Dupka"
+arrNums(9) = "Dupka"
+
+MsgBox "Wynik z tablicy to " & arrNums(4), 0 , NAME
+MsgBox "Wynik z tablicy to " & arrNums(8), 0 , NAME
