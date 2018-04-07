@@ -1,0 +1,14 @@
+' =================== ARRAY =================
+
+option explicit
+
+Dim Tablica(2)
+
+Tablica(0) = "www"
+Tablica(1) = "strona"
+Tablica(2) = "pl"
+
+Dim together
+together = Join(Tablica,".")
+
+MsgBox together
