@@ -1,0 +1,23 @@
+option explicit
+On Error Resume Next
+
+' Deklaracja zmiennych
+
+Dim var1
+Dim var2
+Dim varSum
+Dim strName
+
+Const STALA = "Kubuś malutki"
+
+var1 = 10
+var2 = 5
+
+varSum = var1 + var2
+
+MsgBox varSum
+MsgBox "Suma wynosi " & varSum & " I to tyle"
+
+strName = "Zmienna w stringu"
+
+MsgBox strName,0 ,"Tittle"
