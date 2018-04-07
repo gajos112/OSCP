@@ -1,0 +1,21 @@
+' =================== ARRAY =================
+
+option explicit
+
+Dim arrNums(4)
+
+Const NAME = "Kubus jest malutki"
+
+arrNums(0) = 1
+arrNums(1) = 2
+arrNums(2) = 3
+arrNums(3) = 4
+arrNums(4) = 5
+
+
+Dim num1
+num1 = arrNums(2)
+
+MsgBox "Wynik z tablicy to " & num1, 0 , NAME
+MsgBox "Wynik z tablicy to " & arrNums(4), 0 , NAME
+MsgBox "Wynik z tablicy to " & arrNums(2), 0 , NAME
