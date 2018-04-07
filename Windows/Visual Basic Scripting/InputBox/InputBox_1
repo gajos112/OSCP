@@ -1,0 +1,28 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+option explicit
+
+Dim name, surname, age, koniec
+Dim number1, number2, sum
+
+name = InputBox("Podaj imie")
+surname = InputBox("Podaj nazwisko")
+age = InputBox("Podaj wiek")
+
+MsgBox "Twoje imie to: " & name & " Naziwsko: " & surname & " Wiek: " & age
+
+number1 = InputBox("Podaj pierwsza liczbe: ")
+number2 = InputBox("Podaj drugą liczbe: ")
+sum = CInt(number1) + CInt(number2)
+
+MsgBox "Suma liczb to: " & sum
+
+koniec = InputBox("Pozegnanie", "TITLE", "Put inout here", 500,500)
