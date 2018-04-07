@@ -1,0 +1,28 @@
+' =================== ARRAY =================
+
+option explicit
+
+' Array one column 5 rows
+
+Dim arrNums(1,4)
+
+Const NAME = "Kubus jest malutki"
+
+arrNums(0,0) = "Kuba"
+arrNums(0,1) = "Alan"
+arrNums(0,2) = "Paula"
+arrNums(0,3) = "Krzys"
+arrNums(0,4) = "Dupka"
+
+arrNums(1,0) = "Fakaj"
+arrNums(1,1) = "sie"
+arrNums(1,2) = "ogorku"
+arrNums(1,3) = "1,3"
+arrNums(1,4) = "1,4"
+
+Dim num1
+num1 = arrNums(0,2)
+
+MsgBox "Wynik z tablicy to " & num1, 0 , NAME
+MsgBox "Wynik z tablicy to " & arrNums(1,0), 0 , NAME
+MsgBox "Wynik z tablicy to " & arrNums(0,3), 0 , NAME
