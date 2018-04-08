@@ -1,0 +1,23 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+option explicit
+
+Dim x,y
+
+' Step means how much you want to increase variable
+
+For x = 1 To 10 Step 1
+	MsgBox "Zmienna x rowna sie: " & x,0 ,"Petla FOR"
+Next
+
+For y = 10 To 1 Step -1
+	MsgBox "Zmienna x rowna sie: " & y,0 ,"Petla FOR"
+Next
