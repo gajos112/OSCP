@@ -1,0 +1,23 @@
+CDate - Converts a valid date and time expression to the variant of subtype Date
+Date - Returns the current system date
+DateAdd -	Returns a date to which a specified time interval has been added
+DateDiff -Returns the number of intervals between two dates
+DatePart - Returns the specified part of a given date
+DateSerial - Returns the date for a specified year, month, and day
+DateValue - Returns a date
+Day - Returns a number that represents the day of the month (between 1 and 31, inclusive)
+FormatDateTime - Returns an expression formatted as a date or time
+Hour - Returns a number that represents the hour of the day (between 0 and 23, inclusive)
+IsDate - Returns a Boolean value that indicates if the evaluated expression can be converted to a date
+Minute - Returns a number that represents the minute of the hour (between 0 and 59, inclusive)
+Month - Returns a number that represents the month of the year (between 1 and 12, inclusive)
+MonthName - Returns the name of a specified month
+Now - Returns the current system date and time
+Second - Returns a number that represents the second of the minute (between 0 and 59, inclusive)
+Time - Returns the current system time
+Timer - Returns the number of seconds since 12:00 AM
+TimeSerial - Returns the time for a specific hour, minute, and second
+TimeValue - Returns a time
+Weekday - Returns a number that represents the day of the week (between 1 and 7, inclusive)
+WeekdayName - Returns the weekday name of a specified day of the week
+Year - Returns a number that represents the year
