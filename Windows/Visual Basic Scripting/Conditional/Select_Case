@@ -1,0 +1,26 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+option explicit
+
+Dim x
+
+x = InputBox("Podaj liczbe wieksza od 7", "Tester liczb", "Wpisz liczbe tutaj...")
+
+Select Case x
+	Case "1"
+		MsgBox "Podales jeden"
+	Case "2"
+		MsgBox "Podales dwa"
+	Case "3"
+		MsgBox "Podales trzy"
+	Case else
+		MsgBox "Podales liczbe wieksza niz trzy"
+End Select
