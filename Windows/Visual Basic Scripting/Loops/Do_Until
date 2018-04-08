@@ -1,0 +1,17 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+option explicit
+
+Dim x
+
+Do Until x = 5
+	x = InputBox("Podaj liczbe 5 zeby wyjsc ze skryptu", "Tester liczb", "Wpisz liczbe tutaj...")
+Loop
