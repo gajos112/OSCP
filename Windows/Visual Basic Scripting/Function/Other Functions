@@ -1,0 +1,14 @@
+CreateObject - Creates an object of a specified type
+Eval - Evaluates an expression and returns the result
+IsEmpty - Returns a Boolean value that indicates whether a specified variable has been initialized or not
+IsNull - Returns a Boolean value that indicates whether a specified expression contains no valid data (Null)
+IsNumeric - Returns a Boolean value that indicates whether a specified expression can be evaluated as a number
+IsObject - Returns a Boolean value that indicates whether the specified expression is an automation object
+RGB - Returns a number that represents an RGB color value
+Round - Rounds a number
+ScriptEngine - Returns the scripting language in use
+ScriptEngineBuildVersion - Returns the build version number of the scripting engine in use
+ScriptEngineMajorVersion - Returns the major version number of the scripting engine in use
+ScriptEngineMinorVersion - Returns the minor version number of the scripting engine in use
+TypeName - Returns the subtype of a specified variable
+VarType - Returns a value that indicates the subtype of a specified variable
