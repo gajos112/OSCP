@@ -1,0 +1,7 @@
+Array - Returns a variant containing an array
+Filter - Returns a zero-based array that contains a subset of a string array based on a filter criteria
+IsArray - Returns a Boolean value that indicates whether a specified variable is an array
+Join - Returns a string that consists of a number of substrings in an array
+LBound - Returns the smallest subscript for the indicated dimension of an array
+Split - Returns a zero-based, one-dimensional array that contains a specified number of substrings
+UBound - Returns the largest subscript for the indicated dimension of an array
