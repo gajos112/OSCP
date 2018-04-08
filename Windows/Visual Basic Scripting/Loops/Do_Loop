@@ -1,0 +1,23 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+option explicit
+
+Dim x
+
+Do
+	x = InputBox("Podaj liczbe 5 zeby wyjsc ze skryptu", "Tester liczb", "Wpisz liczbe tutaj...")
+	If x = 5 Then
+		'wscript.quit | Wylacza skryptu
+		exit do 'Konczy Petle DO
+	End If
+Loop
+
+MsgBox "Koniec petli"
