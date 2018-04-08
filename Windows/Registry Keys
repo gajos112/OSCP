@@ -1,5 +1,4 @@
 ============================================= OS INFORMATION =================================================
-
 Version Number: 	Operating System:
 5.0 	Windows 2000
 5.1 	Windows XP
@@ -12,4 +11,32 @@ Version Number: 	Operating System:
 10.0 	Windows 10 (Preview)
 
 reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v CurrentVersion 
+
+============================================= PRODUCT NAME =================================================
 reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ProductName
+
+
+============================================= INSTALATION DATE =================================================
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v Installdate
+systeminfo|find /i "original"
+
+============================================= REGISTERED OWNER =================================================
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v rEGISTEREDoWNER
+
+============================================= SYSTEM ROOT =================================================
+reg query "HKLM\System\CurrentControlSet\Control\TimeZoneInformation" /v TimeZoneKeyName
+
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation
+    TimeZoneKeyName    REG_SZ    Central European Standard Time
+    
+============================================= WALLPAPER =================================================
+reg query "HKCU\Control Panel\Desktop" /v Wallpaper
+
+HKEY_CURRENT_USER\Control Panel\Desktop
+    Wallpaper    REG_SZ    C:\Windows\web\wallpaper\Windows\img0.jpg
+
+============================================= MOUNTED DEVICES =================================================
+reg query "HKLM\System\MountedDevices"
+
+============================================= USB DEVICES =================================================
+reg query "HKLM\SYSTEM\CurrentControlSet\Enum\USBSTOR"
