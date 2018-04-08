@@ -1,0 +1,13 @@
+Asc - Converts the first letter in a string to ANSI code
+CBool - Converts an expression to a variant of subtype Boolean
+CByte - Converts an expression to a variant of subtype Byte
+CCur - Converts an expression to a variant of subtype Currency
+CDate - Converts a valid date and time expression to the variant of subtype Date
+CDbl - Converts an expression to a variant of subtype Double
+Chr - Converts the specified ANSI code to a character
+CInt - Converts an expression to a variant of subtype Integer
+CLng - Converts an expression to a variant of subtype Long
+CSng - Converts an expression to a variant of subtype Single
+CStr - Converts an expression to a variant of subtype String
+Hex - Returns the hexadecimal value of a specified number
+Oct - Returns the octal value of a specified number
