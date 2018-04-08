@@ -1,0 +1,15 @@
+============================================= OS INFORMATION =================================================
+
+Version Number: 	Operating System:
+5.0 	Windows 2000
+5.1 	Windows XP
+5.2 	Windows XP 64bit
+5.2 	Windows Server 2003 / R2
+6.0 	Windows Vista / Windows Server 2008
+6.1 	Windows 7 / Windows Server 2008 R2
+6.2 	Windows 8 / Windows Server 2012
+6.3 	Windows 8.1 / Windows Server 2012 R2
+10.0 	Windows 10 (Preview)
+
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v CurrentVersion 
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ProductName
