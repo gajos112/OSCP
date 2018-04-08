@@ -1,0 +1,14 @@
+Abs - Returns the absolute value of a specified number
+Atn - Returns the arctangent of a specified number
+Cos - Returns the cosine of a specified number (angle)
+Exp - Returns e raised to a power
+Hex - Returns the hexadecimal value of a specified number
+Int - Returns the integer part of a specified number
+Fix - Returns the integer part of a specified number
+Log - Returns the natural logarithm of a specified number
+Oct - Returns the octal value of a specified number
+Rnd - Returns a random number less than 1 but greater or equal to 0
+Sgn - Returns an integer that indicates the sign of a specified number
+Sin - Returns the sine of a specified number (angle)
+Sqr - Returns the square root of a specified number
+Tan - Returns the tangent of a specified number (angle)
