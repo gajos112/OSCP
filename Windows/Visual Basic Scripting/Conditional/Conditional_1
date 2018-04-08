@@ -1,0 +1,64 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+option explicit
+
+Dim x
+
+
+x = InputBox("Podaj liczbe wieksza od 7", "Tester liczb", "Wpisz liczbe tutaj...")
+
+' ============= IF STATMENT ====================
+'If x > 7 Then
+'	MsgBox "Tak jest wieksze niz 7"
+'Else
+'	MsgBox "Nie liczba jest mniejsza niz 7"
+'End If
+
+' ============= IF STATMENT ====================
+'If x > 7 Then
+'	MsgBox "Tak jest wieksze niz 7"
+'ElseIf x > 6 Then
+'	MsgBox "Liczba rowna sie 6"
+'Else
+'	MsgBox "Liczba jest mniejsza niz 6"
+'End If
+
+
+' ============= IF STATMENT ====================
+If x > 7 Then
+	MsgBox "Tak jest wieksze niz 7"
+End If
+
+If x < 7 Then
+	MsgBox "Tak jest mniejsza niz 7"
+End If
+
+Dim strName1, strName2
+strName1 = "Paula"
+strName2 = "Kubus"
+
+' ============= IF STATMENT  <> Condition ====================
+
+If strName1 <> strName2 Then
+	MsgBox "Imiona sa rozne"
+End If
+
+' ============= IF STATMENT  AND OR ====================
+Dim number1, nubmer2 ,number3, number4
+
+number1 = 5
+nubmer2 = 5
+number3 = 4
+number4 = 4
+
+If number1 = nubmer2 AND number3 = number4 Then
+	MsgBox "Liczby sa rowne"
+End IF
