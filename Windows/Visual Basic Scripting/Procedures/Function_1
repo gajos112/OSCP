@@ -1,0 +1,31 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+' Sub Procedure -- does not return a value
+' Function Procedure -- can return a value
+
+option explicit
+
+Dim Number1,Number2, total, sum
+
+Number1 = InputBox("Podaj 1 liczbe", "Tester liczb", "Wpisz liczbe tutaj...")
+Number2 = InputBox("Podaj 1 liczbe", "Tester liczb", "Wpisz liczbe tutaj...")
+
+Number1 = Cint(Number1)
+Number2 = Cint(Number2)
+
+total = Add(Number1, Number2)
+
+MsgBox "Wynik to: " & total
+
+Function Add(num1,num2)
+	sum = num1 + num2
+	Add = sum
+End Function
