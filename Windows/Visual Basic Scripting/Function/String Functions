@@ -1,0 +1,16 @@
+InStr - Returns the position of the first occurrence of one string within another. The search begins at the first character of the string
+InStrRev - Returns the position of the first occurrence of one string within another. The search begins at the last character of the string
+LCase - Converts a specified string to lowercase
+Left - Returns a specified number of characters from the left side of a string
+Len - Returns the number of characters in a string
+LTrim - Removes spaces on the left side of a string
+RTrim - Removes spaces on the right side of a string
+Trim - Removes spaces on both the left and the right side of a string
+Mid - Returns a specified number of characters from a string
+Replace - Replaces a specified part of a string with another string a specified number of times
+Right - Returns a specified number of characters from the right side of a string
+Space - Returns a string that consists of a specified number of spaces
+StrComp - Compares two strings and returns a value that represents the result of the comparison
+String - Returns a string that contains a repeating character of a specified length
+StrReverse - Reverses a string
+UCase - Converts a specified string to uppercase
