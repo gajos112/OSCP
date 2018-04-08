@@ -1,0 +1,17 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+option explicit
+
+Dim x
+
+Do While x < 5 'Exit when false
+	x = InputBox("Podaj liczbe wieksza niz 5 zeby wyjsc ze skryptu", "Tester liczb", "Wpisz liczbe tutaj...")
+Loop
