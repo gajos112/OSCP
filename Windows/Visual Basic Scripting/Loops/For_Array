@@ -1,0 +1,23 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+option explicit
+
+Dim x,y, arrNums
+arrNums = Array(1,2,3,4,5)
+
+' Step means how much you want to increase variable
+
+For x = UBound(arrNums) To LBound(arrNums) step -1
+	MsgBox "Zmienna x rowna sie: " & arrNums(x),0 ,"Petla FOR"
+Next
+
+'UBound zwraca największy możliwy indeks dla określonego wymiaru tablicy danych.
+'LBound Zwraca najmniejszy możliwy indeks dla określonego wymiaru tablicy.
