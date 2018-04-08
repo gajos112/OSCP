@@ -1,0 +1,20 @@
+' =================== Krzysztof ===============
+'
+'
+' =================== Scripts =================
+'
+'
+'
+'
+' =============================================
+
+' Sub Procedure -- does not return a value
+' Function Procedure -- can return a value
+
+option explicit
+
+Sub DisplayMessages
+	MsgBox "Procedura DisplayMessages",0 ,"Procedure Scirpt"
+End Sub
+
+Call DisplayMessages
