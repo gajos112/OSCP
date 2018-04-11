@@ -1,0 +1,10 @@
+option explicit
+
+Dim objFSO, objFolder,a 
+
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+set objFolder = objFSO.GetFolder("C:\Users\KrzysztofGajewski\Desktop\Testowanie")
+
+For Each a in objFolder.Files
+	Wscript.Echo a.Name
+Next
