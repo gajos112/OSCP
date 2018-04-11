@@ -1,0 +1,12 @@
+option explicit
+
+Dim objFSO, objFile, LogFile, FileContent
+
+LogFile = "C:\Users\KrzysztofGajewski\Desktop\Log.txt"
+
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+Set objFile = objFSO.OpenTextFile(LogFile, 1)
+
+FileContent = objFile.Readall
+
+Wscript.Echo (FileContent)
