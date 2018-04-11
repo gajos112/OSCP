@@ -1,0 +1,17 @@
+option explicit
+
+Dim objFSO, objFile, LogFile
+
+LogFile = "C:\Users\KrzysztofGajewski\Desktop\Log.txt"
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+
+If objFSO.FileExists(LogFile) Then
+	WScript.Echo "The file exists"
+	Set objFile = objFSO.OpenTextFile(LogFile, 8)
+	objFile.Write "Nowy wpis"
+Else
+	WScript.Echo "The file does not exist"
+	Set objFile = objFSO.CreateTextFile(LogFile, 2)
+	objFile.Write "Pierwszy wpis"
+End If
+	objFile.Close
