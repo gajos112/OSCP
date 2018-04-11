@@ -8,10 +8,10 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 If objFSO.FileExists(LogFile) Then
 	WScript.Echo "The file exists"
 	Set objFile = objFSO.OpenTextFile(LogFile, 8)
-	objFile.Write "Nowy wpis"
+	objFile.Write "Nowy wpis" & Now & VbCrLf
 Else
 	WScript.Echo "The file does not exist"
 	Set objFile = objFSO.CreateTextFile(LogFile, 2)
-	objFile.Write "Pierwszy wpis"
+	objFile.Write "Pierwszy wpis" & Now & VbCrLf
 End If
 	objFile.Close
