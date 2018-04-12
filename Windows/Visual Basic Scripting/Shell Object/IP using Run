@@ -1,0 +1,8 @@
+option explicit
+
+Dim objShell
+
+Set objShell = CreateObject("WScript.Shell")
+objShell.Run "%COMSPEC% /k ping 127.0.0.1"
+objShell.Run "%COMSPEC% /k nslookup 127.0.0.1"
+objShell.Run "%COMSPEC% /k ipconfig /all"
