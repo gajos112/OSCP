@@ -1,3 +1,5 @@
+option explicit
+
 Dim objShell, objExec
 
 Set objShell = CreateObject("Wscript.Shell")
