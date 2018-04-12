@@ -25,3 +25,9 @@
 %WINDIR% --- C:\Windows
 %PUBLIC% --- C:\Users\Public
 %PSModulePath% --- %SystemRoot%\system32\WindowsPowerShell\v1.0\Modules\
+
+SET [variable=[string]]
+- variable: Specifies the environment-variable name.
+- string: Specifies a series of characters to assign to the variable.
+
+Type SET without parameters to display the current environment variables.
