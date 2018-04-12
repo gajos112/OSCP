@@ -1,0 +1,8 @@
+option explicit
+
+Dim shell, proc
+
+Set shell = CreateObject("WScript.Shell")
+Set proc = shell.Exec("cmd.exe")
+
+WScript.Sleep 1000
