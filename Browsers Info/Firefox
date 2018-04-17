@@ -1,0 +1,64 @@
+====================================== Bookmarks, Downloads and Browsing History ===================================
+
+- places.sqlite 
+
+This file contains all your Firefox bookmarks and lists of files you have downloaded and of websites you have previously
+visited. For more information see Bookmarks in Firefox.
+
+
+====================================================== Passwords =====================================================
+
+Your passwords are stored in two different files, both of which are required:
+
+- key3.db - This file stores your key database for your passwords. To transfer saved passwords, you must copy this file 
+along with the following file.
+- logins.json - Saved passwords. 
+
+
+==============================================Site-specific preferences ==============================================
+
+- permissions.sqlite 
+
+This file stores many of your Firefox permissions that are decided on a per-site basis. For example, it stores which sites 
+are allowed to, or blocked from setting cookies, installing extensions, showing images, displaying popups, etc.
+
+
+
+================================================== Search engines =====================================================
+
+- search.json.mozlz4 
+
+This file stores user-installed search engines. For more information, see Use the Search bar in Firefox and Add or remove a 
+search engine in Firefox.
+
+
+================================================ Personal dictionary =================================================
+
+- persdict.dat 
+
+This file stores any custom words you have added to Firefox's dictionary. If you have never added a custom word to the Firefox 
+dictionary, then you will not have this file. For more information see How do I use the Firefox spell checker?.
+
+
+=============================================== Autocomplete history =================================================
+
+- formhistory.sqlite 
+
+This file remembers what you have searched for in the Firefox search bar and what information you have entered into 
+forms on websites. For more information see Control whether Firefox automatically fills in forms.
+
+
+==================================================== Cookies =========================================================
+
+- cookies.sqlite 
+
+Cookies are used by websites for a variety of reasons, some of which include keeping you logged in to a website you have
+previously logged in to, remembering any preferences a website has allowed you to set, authenticating you as a person who 
+has visited a specific website before, etc.
+
+
+========================================== Security certificate settings ==============================================
+
+- cert8.db 
+
+This file stores all your security certificate settings and any SSL certificates you have imported into Firefox. 
