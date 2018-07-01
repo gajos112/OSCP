@@ -35,3 +35,4 @@ http://www.hackingarticles.in/5-ways-to-exploiting-put-vulnerability/
 
 nmap --script http-methods <target>
 nmap --script http-methods --script-args http-methods.url-path='/website' <target>
+
