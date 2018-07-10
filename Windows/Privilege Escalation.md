@@ -11,17 +11,3 @@
 [WPE-11 - Secondary Logon Handle](https://pentestlab.blog/2017/04/07/secondary-logon-handle/)
 [WPE-12 - Insecure Registry Permissions](https://pentestlab.blog/2017/03/31/insecure-registry-permissions/)
 [WPE-13 - Intel SYSRET](https://pentestlab.blog/2017/06/14/intel-sysret/)
-
-WPE-01 - Stored Credentials
-WPE-02 - Windows Kernel
-WPE-03 - DLL Injection
-WPE-04 - Weak Service Permissions
-WPE-05 - DLL Hijacking
-WPE-06 - Hot Potato
-WPE-07 - Group Policy Preferences
-WPE-08 - Unquoted Service Path
-WPE-09 - Always Install Elevated
-WPE-10 - Token Manipulation
-WPE-11 - Secondary Logon Handle
-WPE-12 - Insecure Registry Permissions
-WPE-13 - Intel SYSRET
