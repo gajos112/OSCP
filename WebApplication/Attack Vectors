@@ -1,0 +1,7 @@
+- XSS - Cross Site Scripting - used to inect code onto a website and bypsss access controls
+- SQLI - SQL injection used to enumerate databases
+- XMLI - XML injection - injection of unintended XML content into an XML message which can alter the intend logic of the application
+- LFI - Local File Inclusion - allow to traverse a file system
+- RFI - Remote File Inclusion - attacker can execute a remote file on a webserver to steal data
+- OS Command injection
+- URL Manipulation - gain access or information from server when poor controls are in place
