@@ -1,1 +1,7 @@
 
+Open Source Web Server Scanner
+
+- Identifies installed web servers and its software
+- Checks for outdated version of servers
+- Checks forserver configuration problems
+
