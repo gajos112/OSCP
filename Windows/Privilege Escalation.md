@@ -1,5 +1,4 @@
 [WPE-01 - Stored Credentials](https://pentestlab.blog/2017/04/19/stored-credentials/)
-
 [WPE-02 - Windows Kernel](https://pentestlab.blog/2017/04/24/windows-kernel-exploits/)
 [WPE-03 - DLL Injection](https://pentestlab.blog/2017/04/04/dll-injection/)
 [WPE-04 - Weak Service Permissions](https://pentestlab.blog/2017/03/30/weak-service-permissions/)
