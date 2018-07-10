@@ -1,1 +1,9 @@
 
+Automatic SQL Injection and Database enumeration tool
+
+- Testing SQL
+- Dumps and cracks password hashes
+- Execute commands on the databse
+- User privilie escalation
+- Post request injection
+
