@@ -4,3 +4,7 @@ https://www.linkedin.com/in/krzysztof-gajewski-537683b9/
 
 unshadow passwd.txt shadow.txt > hash_file.txt
 john --wordlist=/usr/share/wordlists/rockyou.txt hash_file.txt
+
+$2$ or $2a$, Blowfish is used;
+$5$, SHA-256 is used;
+$6$, SHA-512 is used.
