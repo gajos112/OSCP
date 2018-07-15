@@ -1,0 +1,12 @@
+On a lot of systems, you should be able to connect to it as root (the mysql root user) with no password:
+
+ $ mysql -u root
+
+Once you get access to the database, you should be able to navigate it using the following queries:
+
+    show databases;
+    use [DATABASE];
+    show tables;
+    select * from [TABLE];
+
+Where [DATABASE] and [TABLE] should be replaced by the value from the previous queries. 
