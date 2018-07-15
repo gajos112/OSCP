@@ -1,0 +1,5 @@
+Password of the Tomcat's administrator in most cases are stored in two places:
+- the directory where tomcat is installed
+- a directory starting with tomcat in /etc/
+
+The file is named tomcat-users.xml.
