@@ -1,3 +1,35 @@
+The sudo command is used to run commands as another user. Most of the time, it's used to give unpriviliged users the right to run command as root.
+
+The first thing to do is to check what you can do by running the following command:
+
+$ sudo -l
+sudo will most likely ask you for the password of the current user.
+
+Once you executed sudo -l, you should see something similar to the following:
+
+$ sudo -l
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+[sudo] password for pentesterlab: 
+Matching Defaults entries for pentesterlab on 4d451a0aa68f:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+User pentesterlab may run the following commands on 4d451a0aa68f:
+    (victim) /bin/bash
+The key information is located in the final lines: you're allowed to run the command /bin/bash as victim.
+
+Since you can run /bin/bash, you can run any command after that. First, you can run:
+
+ sudo -u victim /bin/bash
+After running this command, you're actually running all the following commands as the user victim:
+
+$ id
+uid=1001(victim) gid=1001(victim) groups=1001(victim)
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
 SUDOERS
 
 Privilege separation is one of the fundamental security concepts implemented in Linux. Normal users works as limited privileges to reduce the scope of their permission.
