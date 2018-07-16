@@ -67,6 +67,11 @@ VIM
 - :set shell=/bin/sh
 - :shell
 
+VIM
+- Reading the file can be done directly by specifying the file's path on the command line after the command or by opening the 
+file inside vim (using :r [PATH]).
+- To gain a shell as the user victim, you can start vim then you can type the following: :!/bin/bash to run /bin/bash
+
 Bash
 - bash -p
 - bash-3.2# id
