@@ -2,6 +2,8 @@ Default user: postgres
 
 Once you get access to this account you should be able to connect to the local PostgreSQL database by running psql.
 
+psql -U user -W
+
 Navigate the database using:
 
 \list to list the databases
