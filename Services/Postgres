@@ -11,3 +11,9 @@ Navigate the database using:
 \d to list the tables
 
 SELECT * FROM table_name;
+
+------------------------------------------------HOW TO READ FILE------------------------------------------------------
+
+CREATE TABLE demo(t text);
+COPY demo from '/var/lib/postgresql/9.4/key.txt';
+SELECT * FROM demo;
