@@ -1,0 +1,11 @@
+Default user: postgres
+
+Once you get access to this account you should be able to connect to the local PostgreSQL database by running psql.
+
+Navigate the database using:
+
+\list to list the databases
+\c [DATABASE] to select the database [DATABASE]
+\d to list the tables
+
+SELECT * FROM table_name;
