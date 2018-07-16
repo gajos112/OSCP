@@ -124,7 +124,14 @@ TCPDUMP
 9. Check IPTables
 - iptables -L
 
-10. Scripts
+10. Program in C then as VICTIM copy file and change permission. (chmod +xs)
+
+int main(void)
+{
+system("cat /home/victim/key.txt");
+}
+
+11. Scripts
 LinEnum 
 - /LinEnum.sh -k keyword -r report -e /tmp/ -t
 - https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
