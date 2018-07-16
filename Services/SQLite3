@@ -1,0 +1,11 @@
+Copydatabase to /tmp
+
+$ file [FILENAME]
+database.db: SQLite 3.x database
+You can then access it using:
+
+$ sqlite3 [FILENAME]
+Once you gain access to it, you can navigate the content using:
+
+.tables to get a list of tables.
+SELECT .... to extract the content of a table using SQL.
