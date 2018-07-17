@@ -1,0 +1,25 @@
+JSON Web Tokens are a storage mechanism for data. JWT can provide the following security mechanisms:
+- Encryption.
+- Signature.
+
+JWT follow the following pattern:
+
+Base64(Header).Base64(Data).Base64(Signature)
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZW1vLnNqb2VyZGxhbmdrZW1wZXIubmxcLyIsImlhdCI6MTQ3NDM1NzIzMywiZXhwIjoxNDc0MzU3MzUzLCJkYXRhIjp7ImhlbGxvIjoid29ybGQifX0.HAveF7AqeKj-4o-tJpYQWXKN2WgWTa8uRYViRp_3mh8
+
+
+A JWT header looks like this:
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+
+Multiple signature methods can be used to ensure the integrity of JWT:
+- RSA based
+- Elliptic curves
+- HMAC
+- None
+
+Attack:
+
+Algorithm change to "None" and then in section "Data" change account name.
