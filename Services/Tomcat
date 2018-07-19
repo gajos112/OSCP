@@ -63,6 +63,8 @@ adding: index.jsp(in = 579) (out= 351)(deflated 39%)
 
 Our Web Shell (webshell.war) is now packaged and we can upload it using the Tomcat Manager.
 
+Command: mkdir webshell ; cp webshell.jsp webshell ; cd webshell ; jar -cvf ../webshell.war *
+
 ---------------------------------------------------CVE-2007-1860---------------------------------------------
 
 Basically, . is encoded as %2e and the % in %2e is then re-encoded as %25. The value 25 does not need a second encoding.
@@ -75,3 +77,4 @@ configured to be forwarded to Tomcat (using `modjk`).
 - Apache will send to Tomcat for processing.
 - contains the double-encoding trick %252e%252e.
 - contains the path /manager/html after the double-encoding to access the Tomcat administration interface.
+
