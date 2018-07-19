@@ -3,3 +3,11 @@ Password of the Tomcat's administrator in most cases are stored in two places:
 - a directory starting with tomcat in /etc/
 
 The file is named tomcat-users.xml.
+
+Default credentials:
+
+tomcat:tomcat
+admin:
+admin:manager
+admin:password
+admin:s3cret
