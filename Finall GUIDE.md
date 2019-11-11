@@ -1,20 +1,13 @@
-###############################
-NMAP
-###############################
+# NMAP
 nmap -sC -sV -sT -oA NMAP/HTB 10.10.10.161
 
-###############################
-SMB
-###############################
+# SMB
 smbclient -N -L //10.10.10.161/
 smbclient -N //10.10.10.161/Share
 smbmap -H 10.10.10.161 -u anonymous -d HTB.LOCAL
 smbmap -H 10.10.10.161 -u anonymous -d localhost
 
-###############################
-LDAP
-###############################
-
+# LDAP
 ldapsearch -x -h lightweight.htb -b "dc=lightweight,dc=htb" 
 
 responder.oy -i eth0 -w -f
@@ -22,9 +15,7 @@ responder.oy -i eth0 -w -f
 -w : WPAD rogue server
 -f : This option allows you to fingerprint a host that issued an NBT-NS or LLMNR query.
 
-###############################
-DNS
-###############################
+# DNS
 nslookup
 SERVER 10.10.10.161
 - 127.0.0.1
@@ -37,9 +28,7 @@ dnsrecon -r 10.10.10.0/24 -n 10.10.10.161
 dig axfr @10.10.10.161
 dig axfr bank.htb @10.10.10.161
 
-###############################
-Upgrading Reverse Shells to be Fully Interactive
-###############################
+# Upgrading Reverse Shells to be Fully Interactive
 python -c "import pty; pty.spawn('/bin/bash')"
 Press Ctrl+Z to background your reverse shell, then in your local machine run: 
 - stty raw -echo
