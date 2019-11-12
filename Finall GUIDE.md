@@ -1,10 +1,11 @@
+
+# NMAP
+nmap -sC -sV -sT -oA NMAP/HTB 10.10.10.161
+
 # FTP
 ftp $targetip
 Username: anonymous
 Password: anything
-
-# NMAP
-nmap -sC -sV -sT -oA NMAP/HTB 10.10.10.161
 
 # SMB
 smbclient -N -L //10.10.10.161/
@@ -48,4 +49,8 @@ stty size
 This should return two numbers, which are the number of rows and columns in your terminal. For example’s sake let’s say this command returned 48 120 Head on back to your victim box’s shell and run the following.
 
 stty -rows 48 -columns 120
+
+# Python SERVER
+
+python -m simpleHTTPServer
 
