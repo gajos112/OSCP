@@ -18,6 +18,10 @@ smbmap -H 10.10.10.161 -u anonymous -d localhost
 
 https://0xdf.gitlab.io/2018/12/02/pwk-notes-smb-enumeration-checklist-update1.html?fbclid=IwAR1qQDsLzkudInhrnUwL1V9ONiVXMD-vW1V5hrEI92xmuhlExEFOmyu_3xc#check-null-sessions
 
+- NetNTLM relaying:
+
+https://byt3bl33d3r.github.io/practical-guide-to-ntlm-relaying-in-2017-aka-getting-a-foothold-in-under-5-minutes.html
+
 # LDAP
 ldapsearch -x -h 10.10.10.161 -s base namingcontexts
 ldapsearch -x -h lightweight.htb -b "dc=lightweight,dc=htb" 
