@@ -19,6 +19,7 @@ smbmap -H 10.10.10.161 -u anonymous -d localhost
 https://0xdf.gitlab.io/2018/12/02/pwk-notes-smb-enumeration-checklist-update1.html?fbclid=IwAR1qQDsLzkudInhrnUwL1V9ONiVXMD-vW1V5hrEI92xmuhlExEFOmyu_3xc#check-null-sessions
 
 # LDAP
+ldapsearch -x -h 10.10.10.161 -s base namingcontexts
 ldapsearch -x -h lightweight.htb -b "dc=lightweight,dc=htb" 
 
 responder.py -I eth0 -w -f
