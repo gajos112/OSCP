@@ -69,6 +69,10 @@ This should return two numbers, which are the number of rows and columns in your
 
 stty -rows 48 -columns 120
 
+# Redis
+
+https://packetstormsecurity.com/files/134200/Redis-Remote-Command-Execution.html
+
 # Python SERVER
 
 python -m simpleHTTPServer
