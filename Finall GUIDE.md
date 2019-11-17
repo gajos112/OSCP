@@ -13,13 +13,39 @@ gobuster dir -w /usr/share/wordlists/dirb/big.txt -l -t 30 -e -k -x .html,.php -
 
 
 # SMB
-smbclient -N -L //10.10.10.161/
+- smbclient -N -L //10.10.10.161/
 
-smbclient -N //10.10.10.161/Share
+- smbclient -L \\10.10.10.3
 
-smbmap -H 10.10.10.161 -u anonymous -d HTB.LOCAL
+WARNING: The "syslog" option is deprecated
+Enter WORKGROUP\root's password: 
+Anonymous login successful
 
-smbmap -H 10.10.10.161 -u anonymous -d localhost
+	Sharename       Type      Comment
+	---------       ----      -------
+	print$          Disk      Printer Drivers
+	tmp             Disk      oh noes!
+	opt             Disk      
+	IPC$            IPC       IPC Service (lame server (Samba 3.0.20-Debian))
+	ADMIN$          IPC       IPC Service (lame server (Samba 3.0.20-Debian))
+
+- smbclient -N //10.10.10.161/Share
+
+- smbmap -H 10.10.10.3
+[+] Finding open SMB ports....
+[+] User SMB session establishd on 10.10.10.3...
+[+] IP: 10.10.10.3:445	Name: 10.10.10.3                                        
+	Disk                                                  	Permissions
+	----                                                  	-----------
+	print$                                            	NO ACCESS
+	tmp                                               	READ, WRITE
+	opt                                               	NO ACCESS
+	IPC$                                              	NO ACCESS
+	ADMIN$                                            	NO ACCESS
+
+- smbmap -H 10.10.10.161 -u anonymous -d HTB.LOCAL
+
+- mbmap -H 10.10.10.161 -u anonymous -d localhost
 
 https://0xdf.gitlab.io/2018/12/02/pwk-notes-smb-enumeration-checklist-update1.html?fbclid=IwAR1qQDsLzkudInhrnUwL1V9ONiVXMD-vW1V5hrEI92xmuhlExEFOmyu_3xc#check-null-sessions
 
