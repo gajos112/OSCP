@@ -47,7 +47,11 @@ Anonymous login successful
 
 - mbmap -H 10.10.10.161 -u anonymous -d localhost
 
-https://0xdf.gitlab.io/2018/12/02/pwk-notes-smb-enumeration-checklist-update1.html?fbclid=IwAR1qQDsLzkudInhrnUwL1V9ONiVXMD-vW1V5hrEI92xmuhlExEFOmyu_3xc#check-null-sessions
+- Samba 3.0.20 < 3.0.25rc3 **exploit**
+
+https://gist.github.com/joenorton8014/19aaa00e0088738fc429cff2669b9851
+
+- Link do enumeracji: https://0xdf.gitlab.io/2018/12/02/pwk-notes-smb-enumeration-checklist-update1.html?fbclid=IwAR1qQDsLzkudInhrnUwL1V9ONiVXMD-vW1V5hrEI92xmuhlExEFOmyu_3xc#check-null-sessions
 
 - NetNTLM relaying:
 
