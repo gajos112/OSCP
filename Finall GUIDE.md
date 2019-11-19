@@ -186,6 +186,8 @@ https://www.yeahhub.com/msfvenom-all-payload-examples-cheatsheet-2017/
 
 -Windows
 
+https://pentest.blog/windows-privilege-escalation-methods-for-pentesters/
+
 https://guif.re/windowseop?fbclid=IwAR2fwsD6D7XjFhZbD4IGSTHtQkGs5D7HXEwVEnCYSQEDWzsuqds8geOi7uc#EoP%208:%20Kernel%20vulnerabilities
 
 https://www.scip.ch/en/?labs.20181011
