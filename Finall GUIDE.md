@@ -1,7 +1,6 @@
 
 ##### Table of Contents  
 - [NMAP](#NMAP)
-
 - [FTP](#FTP)
 - [HTTP](#HTTP)
 - [SMB](#SMB)
@@ -11,7 +10,7 @@
 - [Redis](#Reids)
 - [Search files](#Search files)
 - [Python SERVER](#Python SERVER)
-- [Windows nishang shell](#Windows nishang shell)
+- [Nishang](#Nishang)
 - [Shells](#Shells)
 - [Metasploit](#Metasploit)
 - [Privilige Escalation](#Privilige Escalation)
@@ -23,12 +22,12 @@
 # NMAP
 nmap -sC -sV -sT -oA NMAP/HTB 10.10.10.161
 
-## FTP
+# FTP
 ftp $targetip
 Username: anonymous
 Password: anything
 
-## HTTP
+# HTTP
 
 gobuster dir -w /usr/share/wordlists/dirb/big.txt -l -t 30 -e -k -x .html,.php -u http://10.10.10.157:80 -o   gobuster_10.10.10.157_80.txt
 
