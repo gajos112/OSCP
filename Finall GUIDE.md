@@ -4,27 +4,20 @@
 
 - [FTP](#FTP)
 - [HTTP](#HTTP)
-[SMB](#SMB)
+- [SMB](#SMB)
+- [LDAP](#LDAP)
+- [DNS](#DNS)
+- [Upgrading Reverse Shells to be Fully Interactive](#Upgrading Reverse Shells to be Fully Interactive)
+- [Redis](#Reids)
+- [Search files](#Search files)
+- [Python SERVER](#Python SERVER)
+- [Windows nishang shell](#DNS)
+- [Shells](#Shells)
+- [Metasploit](#Metasploit)
+- [Privilige Escalation](#Privilige Escalation)
 
-[LDAP](#LDAP)
 
-[DNS](#DNS)
 
-[Upgrading Reverse Shells to be Fully Interactive](#Upgrading Reverse Shells to be Fully Interactive)
-
-[Redis](#Reids)
-
-[Search files](#Search files)
-
-[Python SERVER](#Python SERVER)
-
-[Windows nishang shell](#DNS)
-
-[Shells](#Shells)
-
-[Metasploit](#Metasploit)
-
-[Privilige Escalation](#Privilige Escalation)
 
 
 # NMAP
