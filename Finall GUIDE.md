@@ -1,9 +1,9 @@
 
 ##### Table of Contents  
-[NMAP](#NMAP)
+- [NMAP](#NMAP)
 
-[FTP](#FTP)
-[HTTP](#HTTP)
+- [FTP](#FTP)
+- [HTTP](#HTTP)
 [SMB](#SMB)
 
 [LDAP](#LDAP)
