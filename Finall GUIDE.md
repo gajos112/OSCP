@@ -1,4 +1,11 @@
 
+##### Table of Contents  
+[Headers](#headers)  
+[SMB](#SMB)  
+...snip...    
+<a name="headers"/>
+## Headers
+
 # NMAP
 nmap -sC -sV -sT -oA NMAP/HTB 10.10.10.161
 
@@ -12,7 +19,7 @@ Password: anything
 gobuster dir -w /usr/share/wordlists/dirb/big.txt -l -t 30 -e -k -x .html,.php -u http://10.10.10.157:80 -o   gobuster_10.10.10.157_80.txt
 
 
-# SMB
+## SMB
 - smbclient -N -L //10.10.10.161/
 
 - smbclient -L \\10.10.10.3
