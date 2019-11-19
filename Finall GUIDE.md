@@ -198,3 +198,9 @@ https://www.scip.ch/en/?labs.20181011
 - Linux
 https://gtfobins.github.io/
 
+# Appache Tomcat
+
+- Default Credentials
+
+https://github.com/netbiosX/Default-Credentials/blob/master/Apache-Tomcat-Default-Passwords.mdown
+
