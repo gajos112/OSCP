@@ -2,8 +2,7 @@
 ##### Table of Contents  
 [Headers](#headers)  
 [SMB](#SMB)  
-...snip...    
-<a name="headers"/>
+
 ## Headers
 
 # NMAP
