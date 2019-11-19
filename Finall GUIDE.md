@@ -1,19 +1,33 @@
 
 ##### Table of Contents  
 [NMAP](#NMAP)
+
 [FTP](#FTP)
+
 [HTTP](#HTTP)
+
 [SMB](#SMB)
+
 [LDAP](#LDAP)
+
 [DNS](#DNS)
+
 [Upgrading Reverse Shells to be Fully Interactive](#Upgrading Reverse Shells to be Fully Interactive)
+
 [Redis](#Reids)
+
 [Search files](#Search files)
+
 [Python SERVER](#Python SERVER)
+
 [Windows nishang shell](#DNS)
+
 [Shells](#Shells)
+
 [Metasploit](#Metasploit)
+
 [Privilige Escalation](#Privilige Escalation)
+
 
 # NMAP
 nmap -sC -sV -sT -oA NMAP/HTB 10.10.10.161
