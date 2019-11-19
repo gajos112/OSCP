@@ -120,6 +120,11 @@ config set dir /var/www/html/
 
 save
 
+# Search files
+
+- dir secret.doc /s /p (Windows)
+- find -O3 -L /var/www/ -name "\*.html" (Linux)
+
 # Python SERVER
 
 python -m simpleHTTPServer
