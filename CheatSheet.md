@@ -1,4 +1,4 @@
-#1. LDAP
+# 1. LDAP
 
 ldaspsearch -x -h 10.10.10.107
 
