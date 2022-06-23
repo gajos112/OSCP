@@ -1,7 +1,9 @@
 # 1. LDAP
 
+1. LDAPSEARCH 
 ldaspsearch -x -h 10.10.10.107
 
+2. NMAP
 ┌──(kali㉿kali)-[~/HackTheBox]
 └─$ locate -r nse$ | grep -i ldap
 /usr/share/nmap/scripts/ldap-brute.nse
