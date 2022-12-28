@@ -129,9 +129,12 @@ stty -rows 48 -columns 120
 
 # FileTransfer
 
-# PowerShell
+# PowerShell - BASE64
 KALI: `cat file | base64 -w 0;echo`
+
 VICTIM: `[IO.Fi[IO.File]::WriteAllBytes("C:\Users\Public\file", [Convert]::FromBase64String("LS0t......="))`
+
+# PowerShell - BASE64
 
 ## Redis
 
