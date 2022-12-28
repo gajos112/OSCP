@@ -6,7 +6,7 @@
 - [SMB](#SMB)
 - [LDAP](#LDAP)
 - [DNS](#DNS)
-- [File Transfer](#File Transfer)
+- [File Transfer](#FileTransfer)
 - [Upgrading Reverse Shells to be Fully Interactive](#Upgrading Reverse Shells to be Fully Interactive)
 - [Redis](#Reids)
 - [Search files](#Search files)
