@@ -127,7 +127,7 @@ lport => 8080This should return two numbers, which are the number of rows and co
 
 stty -rows 48 -columns 120
 
-# File Transfer
+# FileTransfer
 
 ## Redis
 
