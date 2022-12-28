@@ -6,6 +6,7 @@
 - [SMB](#SMB)
 - [LDAP](#LDAP)
 - [DNS](#DNS)
+- [File Transfer](#File Transfer)
 - [Upgrading Reverse Shells to be Fully Interactive](#Upgrading Reverse Shells to be Fully Interactive)
 - [Redis](#Reids)
 - [Search files](#Search files)
@@ -125,6 +126,8 @@ msf5 exploit(multi/handler) > set lport 8080
 lport => 8080This should return two numbers, which are the number of rows and columns in your terminal. For example’s sake let’s say this command returned 48 120 Head on back to your victim box’s shell and run the following.
 
 stty -rows 48 -columns 120
+
+## File Transfer
 
 ## Redis
 
