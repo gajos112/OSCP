@@ -34,7 +34,9 @@ Password: anything
 gobuster dir -w /usr/share/wordlists/dirb/big.txt -l -t 30 -e -k -x .html,.php -u http://10.10.10.157:80 -o   gobuster_10.10.10.157_80.txt
 
 
-## SMB
+# SMB
+
+## SMBCLIENT
 - smbclient -N -L //10.10.10.161/
 
 - smbclient -L \\10.10.10.3
@@ -53,6 +55,8 @@ Anonymous login successful
 
 - smbclient -N //10.10.10.161/Share
 
+## SMBMAP
+
 - smbmap -H 10.10.10.3
 [+] Finding open SMB ports....
 [+] User SMB session establishd on 10.10.10.3...
@@ -67,8 +71,9 @@ Anonymous login successful
 
 - smbmap -H 10.10.10.161 -u anonymous -d HTB.LOCAL
 
-- mbmap -H 10.10.10.161 -u anonymous -d localhost
+- smbmap -H 10.10.10.161 -u anonymous -d localhost
 
+## crackmapexec
 - KALI: `crackmapexec smb 10.10.10.161 -u Administrator -H aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6`
 
 - Samba 3.0.20 < 3.0.25rc3 **exploit**
